@@ -1,5 +1,7 @@
 var mainState = {
+    
 	preload: function(){
+        
 		// Player
 		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
 		// Ennemy
@@ -21,31 +23,40 @@ var mainState = {
 
 		this.enemies = game.add.group();
 		this.enemies.enableBody = true;
-		this.enemies.createMultiple(3, 'enemy');
+		this.enemies.createMultiple(15, 'enemy');
         this.nextDechet = 0;
         
 		this.time.events.loop(2200, this.addEnemy, this);
         
-        
+        this.numberOfLane = 5;
+        //this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
+        this.Turtle0Button = this.input.keyboard.addKey(Phaser.Keyboard.A);
+        this.Turtle0Button.onDown.add(function() { this.player.frame=0; },this);
+        this.Turtle1Button = this.input.keyboard.addKey(Phaser.Keyboard.Z);
+        this.Turtle1Button.onDown.add(function() { this.player.frame=1; },this);
+        this.Turtle2Button = this.input.keyboard.addKey(Phaser.Keyboard.E);
+        this.Turtle2Button.onDown.add(function() { this.player.frame=2; },this);
+        this.Turtle3Button = this.input.keyboard.addKey(Phaser.Keyboard.R);
+        this.Turtle3Button.onDown.add(function() { this.player.frame=3; },this);
 	},
 
 	update: function(){
         game.physics.arcade.overlap(this.player, this.enemies, this.dieDechet, null, this);
         
 		this.movePlayer();
-
-
 	},
 
 	addEnemy: function(){
         var enemy = this.enemies.getFirstDead();
+		var position = 500-Math.floor(this.numberOfLane/2)*60;
 
 		if (!enemy) {
 			return;
 		}
 
+        position = position + Math.floor(Math.random()*this.numberOfLane)*60;
 		enemy.anchor.setTo(0.5, 1);
-		enemy.reset(490, 125);
+		enemy.reset(position, 125);
 		enemy.body.gravity.y = 250;
 		enemy.body.bounce.x = 1;
 		enemy.checkWorldBounds = true;
