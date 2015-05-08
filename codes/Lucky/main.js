@@ -21,12 +21,17 @@ var mainState = {
 
 		this.enemies = game.add.group();
 		this.enemies.enableBody = true;
-		this.enemies.createMultiple(15, 'enemy');
-
+		this.enemies.createMultiple(3, 'enemy');
+        this.nextDechet = 0;
+        
 		this.time.events.loop(2200, this.addEnemy, this);
+        
+        
 	},
 
 	update: function(){
+        game.physics.arcade.overlap(this.player, this.enemies, this.dieDechet, null, this);
+        
 		this.movePlayer();
 
 
@@ -40,11 +45,13 @@ var mainState = {
 		}
 
 		enemy.anchor.setTo(0.5, 1);
-		enemy.reset(250, 125);
+		enemy.reset(490, 125);
 		enemy.body.gravity.y = 250;
 		enemy.body.bounce.x = 1;
 		enemy.checkWorldBounds = true;
-		enemy.cutOfBoundsKill = true;   
+		enemy.cutOfBoundsKill = true;
+        
+        this.nextDechet = this.nextDechet + 1;
     },
 
 	movePlayer: function(){
@@ -55,8 +62,6 @@ var mainState = {
 			if(this.player.body.x - 4 >= 100) {
 				this.player.body.velocity.x = -200;
 			}
-
-			
 		}
 		else if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 			if(this.player.body.x + 4 <= 900) {
@@ -64,6 +69,15 @@ var mainState = {
 			}
 		}
 	},
+    
+    dieDechet: function(){
+        
+        
+        var enemy = this.enemies.children;
+        
+        enemy[this.nextDechet-1].kill();
+        
+    }
 
 	
 };
