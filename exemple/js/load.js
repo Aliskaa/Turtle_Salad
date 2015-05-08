@@ -15,7 +15,7 @@ var loadState = {
 		game.load.image('pixel', 'assets/pixel.png');
 		game.load.image('pixel2', 'assets/pixel2.png');
 		game.load.image('pixel3', 'assets/pixel3.png');
-		game.load.spritesheet('mute', 'assets/muteButton.png', 28, 22);
+		//game.load.spritesheet('mute', 'assets/muteButton.png', 28, 22);
 		game.load.image('background', 'assets/background.png');
 
 		game.load.audio('jump', ['assets/jump.ogg', 'assets/jump.mp3']);
