@@ -9,12 +9,15 @@ var mainState = {
 	},
 
 	create: function(){
-		
+        
 		game.stage.backgroundColor = '#3498db';
 		
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
 		this.cursor = game.input.keyboard.createCursorKeys();
+        
+        this.score = 0;
+        this.scoreLabel = game.add.text(30, 30, 'score : 0', {font: '18px Arial', fill: '#ffffff'});
 		
 		this.player = game.add.sprite(game.world.centerX, 475, 'tortue');
 		this.player.anchor.setTo(0.5, 0.5);
@@ -83,6 +86,10 @@ var mainState = {
     
     dieDechet: function(player,enemy){
         enemy.kill();
+        
+        this.score += 1;
+		this.scoreLabel.text = 'score : '+this.score;
+        
     }
 
 	
