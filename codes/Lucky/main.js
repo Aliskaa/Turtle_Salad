@@ -70,13 +70,8 @@ var mainState = {
 		}
 	},
     
-    dieDechet: function(){
-        
-        
-        var enemy = this.enemies.children;
-        
-        enemy[this.nextDechet-1].kill();
-        
+    dieDechet: function(player,enemy){
+        enemy.kill();
     }
 
 	
