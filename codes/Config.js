@@ -3,13 +3,13 @@ var ConfigState = {
 	preload: function(){
 		game.load.image('menu', 'assets/fond.png');
 
-			 game.load.image('buttonEasy', 'assets/.png');
+			 game.load.image('buttonEasy', 'assets/bouton_facile.png');
 			 
-			 game.load.image('buttonNormal', 'assets/.png');
+			 game.load.image('buttonNormal', 'assets/bouton_normal.png');
 
-			 game.load.image('buttonHard', 'assets/.png');
+			 game.load.image('buttonHard', 'assets/bouton_difficile.png');
 
-			 game.load.image('buttonReturn','assets/.png');
+			 //game.load.image('buttonReturn','assets/.png');
 
 	},
 
@@ -37,16 +37,16 @@ var ConfigState = {
 		 this.HardButton.input.useHandCursor = true;
 		 this.HardButton.width = 250;
 
-		 this.ReturnButton = game.add.button(100,600,'buttonReturn', this.Return,this);
+		 /*this.ReturnButton = game.add.button(100,600,'buttonReturn', this.Return,this);
 		 this.ReturnButton.input.useHandCursor = true;
-		 this.ReturnButton.width = 250;
+		 this.ReturnButton.width = 250;*/
 
 
 	},
 
-	Return: function(){
+	/*Return: function(){
 		game.state.start('menu');
-	}, 
+	}, */
 
 	Config1: function(){
 		 this.level = this.level1;
@@ -61,8 +61,11 @@ var ConfigState = {
 
 		
 	},
+};
 
-
+var game = new Phaser.Game(1000,550, Phaser.AUTO, 'gameDiv');
+game.state.add('Config', ConfigState);
+game.state.start('Config');
 
 
 
