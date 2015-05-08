@@ -5,7 +5,10 @@ var mainState = {
 		// Player
 		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
 		// Ennemy
-		game.load.image('enemy', 'assets/enemy.png');
+		game.load.image('enemyV', 'assets/enemy_vert.png');
+        game.load.image('enemyB', 'assets/enemy_bleu.png');
+        game.load.image('enemyJ', 'assets/enemy_jaune.png');
+        game.load.image('enemyM', 'assets/enemy_marron.png');
 	},
 
 	create: function(){
@@ -26,7 +29,7 @@ var mainState = {
 
 		this.enemies = game.add.group();
 		this.enemies.enableBody = true;
-		this.enemies.createMultiple(15, 'enemy');
+		this.enemies.createMultiple(15, ['enemyV','enemyB','enemyJ','enemyM']);
         this.nextDechet = 0;
         
 		this.time.events.loop(2200, this.addEnemy, this);
