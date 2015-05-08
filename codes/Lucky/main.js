@@ -1,5 +1,4 @@
 var mainState = {
-	
 	preload: function(){
 		// Player
 		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
@@ -25,10 +24,6 @@ var mainState = {
 		this.enemies.createMultiple(15, 'enemy');
 
 		this.time.events.loop(2200, this.addEnemy, this);
-		
-		//ANTOINE
-		this.numberOfLane = 3;
-		
 	},
 
 	update: function(){
@@ -39,14 +34,13 @@ var mainState = {
 
 	addEnemy: function(){
         var enemy = this.enemies.getFirstDead();
-		var position = 500-Math.floor(this.numberOfLane/2)*60;
-		//taille tortue 60-60
+
 		if (!enemy) {
 			return;
 		}
-		position = position + Math.floor(Math.random()*this.numberOfLane)*60;
+
 		enemy.anchor.setTo(0.5, 1);
-		enemy.reset(position, 125);
+		enemy.reset(250, 125);
 		enemy.body.gravity.y = 250;
 		enemy.body.bounce.x = 1;
 		enemy.checkWorldBounds = true;
