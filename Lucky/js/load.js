@@ -45,6 +45,13 @@ var loadState = {
         // Messages
         game.load.image('Bravo', 'assets/bravo.png');
         game.load.image('Recommencer', 'assets/recommencer.png');
+        // Points Cultures
+        game.load.image('PC1', 'assets/point_culture1.png');
+        game.load.image('PC2', 'assets/point_culture2.png');
+        game.load.image('PC3', 'assets/point_culture3.png');
+        game.load.image('PC4', 'assets/point_culture4.png');
+        game.load.image('PC5', 'assets/point_culture5.png');
+        game.load.image('PC6', 'assets/point_culture6.png');
 	},
 
 

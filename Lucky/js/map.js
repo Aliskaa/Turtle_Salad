@@ -56,6 +56,7 @@ var mapState = {
         } else {
             this.Level6Button.inputEnabled = false;
         }
+        
         this.ReturnButton = game.add.button(80,475,'buttonReturn', this.Return,this);
         this.ReturnButton.anchor.setTo(0.5,0.5);
         this.ReturnButton.input.useHandCursor = true;
@@ -105,8 +106,10 @@ var mapState = {
             activatePoubelleB:false,
             activatePoubelleJ:false
 		};
-		game.state.start('play');
-
+        var PC = game.add.sprite(500, 275,'PC1');
+        PC.anchor.setTo(0.5,0.5);
+        var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
+        button.anchor.setTo(0.5, 0.5);
 	},
 
 	playLevel2:function(){
@@ -116,9 +119,10 @@ var mapState = {
             activatePoubelleB :false,
             activatePoubelleJ :false
 		};
-        game.state.start('play');
-		
-
+        var PC = game.add.sprite(500, 275,'PC2');
+        PC.anchor.setTo(0.5,0.5);
+        var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
+        button.anchor.setTo(0.5, 0.5);
 	},
 
 	playLevel3:function(){
@@ -128,10 +132,10 @@ var mapState = {
             activatePoubelleB:false,
             activatePoubelleJ:false
 		};
-		if (game.win.win2){
-			this.Level3Button.inputEnabled = true;
-			game.state.start('play');
-		}
+        var PC = game.add.sprite(500, 275,'PC3');
+        PC.anchor.setTo(0.5,0.5);
+        var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
+        button.anchor.setTo(0.5, 0.5);
 
 	},
 
@@ -142,10 +146,10 @@ var mapState = {
             activatePoubelleB:true,
             activatePoubelleJ:false
 		};
-		if (game.win.win3){
-			this.Level4Button.inputEnabled = true;
-			game.state.start('play');
-		}
+        var PC = game.add.sprite(500, 275,'PC4');
+        PC.anchor.setTo(0.5,0.5);
+        var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
+        button.anchor.setTo(0.5, 0.5);
 
 	},
 
@@ -156,20 +160,21 @@ var mapState = {
             activatePoubelleB:true,
             activatePoubelleJ:true
 		};
-		if (game.win.win4){
-			this.Level5Button.inputEnabled = true;
-			game.state.start('play');
-		}
-
+        var PC = game.add.sprite(500, 275,'PC5');
+        PC.anchor.setTo(0.5,0.5);
+        var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
+        button.anchor.setTo(0.5, 0.5);
 	},
 
 	playLevel6:function(){
-		if (game.global.win5){
-			this.Level6Button.inputEnabled = true;
-			game.state.start('play');
-		}
-
+        var PC = game.add.sprite(500, 275,'PC6');
+        PC.anchor.setTo(0.5,0.5);
+        var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
+        button.anchor.setTo(0.5, 0.5);
 	},
 
+    playGame: function(){
+        game.state.start('play');
+    }
 
 };
