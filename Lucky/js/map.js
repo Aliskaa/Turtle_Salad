@@ -132,6 +132,7 @@ var mapState = {
             activatePoubelleB:false,
             activatePoubelleJ:false
 		};
+        game.dechets.dechetV = ['bouteille_verre','bocal'];
         var PC = game.add.sprite(500, 275,'PC3');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -167,6 +168,7 @@ var mapState = {
 	},
 
 	playLevel6:function(){
+        game.dechets.dechetJ = ['conserve','lait'];
         var PC = game.add.sprite(500, 275,'PC6');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);

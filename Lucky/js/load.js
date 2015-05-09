@@ -1,6 +1,11 @@
 var loadState = {
 
 	preload: function(){
+		//Sounds
+        game.load.audio('buttonSound', 'assets/multimedia_button_click_006.mp3');
+        game.load.audio('buttonSound2', 'assets/multimedia_button_click_018.mp3');
+        game.load.audio('Music', 'assets/Musique.mp3');
+		game.load.spritesheet('mute', 'assets/son.png',30, 28);
 		// background
         game.load.image('backgroundMenu', 'assets/fond.png');
         game.load.image('backgroundGame', 'assets/fond_in_game.png');
@@ -9,10 +14,13 @@ var loadState = {
 		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
         game.load.image('tortueMap','assets/tortue_niveaux.png');
 		// Dechets
-        game.load.image('dechetB', 'assets/journal.png');
-        game.load.image('dechetJ', 'assets/plastique.png');
-        game.load.image('dechetV', 'assets/bouteille_verre.png');
-        game.load.image('dechetM', 'assets/pomme.png');
+        game.load.image('journal', 'assets/journal.png');
+        game.load.image('lait', 'assets/lait.png');
+        game.load.image('bocal', 'assets/bocal.png');
+        game.load.image('conserve', 'assets/conserve.png');
+        game.load.image('bouteille_verre', 'assets/bouteille_verre.png');
+        game.load.image('pomme', 'assets/pomme.png');
+        game.load.image('couche_culotte', 'assets/couche_culotte.png');
         // Poubelles
         game.load.image('poubelleJO','assets/pjo.png');
         game.load.image('poubelleJF','assets/pjf.png');
