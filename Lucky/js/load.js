@@ -60,6 +60,7 @@ var loadState = {
         game.load.image('PC4', 'assets/point_culture4.png');
         game.load.image('PC5', 'assets/point_culture5.png');
         game.load.image('PC6', 'assets/point_culture6.png');
+        game.load.image('PF', 'assets/point_final.png');
 	},
 
 
@@ -68,6 +69,15 @@ var loadState = {
 			trashPopFrequency: 2200,
 			gravityDifficulty: 120
 		}
+        
+        game.win = {
+            win1: false,
+            win2: false,
+            win3: false,
+            win4: false,
+            win5: false,
+            win6: false
+        };
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.state.start('menu');

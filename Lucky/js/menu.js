@@ -29,18 +29,10 @@ var menuState = {
 		if (game.sound.mute) {
 			this.muteButton.frame = 1;
 		}
-
-        game.win = {
-            win1: false,
-            win2: false,
-            win3: false,
-            win4: false,
-            win5: false
-        };
         
         game.tortue = {
             x: 278,
-            y:430
+            y: 430
         };
         
         game.dechets = {

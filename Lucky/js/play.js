@@ -148,10 +148,10 @@ var playState = {
         dechets = [];
         indexDechet = 0;
         
-        if(game.global.activatePoubelleM){
+        /*if(game.global.activatePoubelleM){
             dechets.push('dechetM');
             indexDechet+=1;
-        }
+        }*/
         if(game.global.activatePoubelleV){
             dechets.push('dechetV');
             indexDechet+=1;
@@ -165,9 +165,9 @@ var playState = {
             indexDechet+=1;
         }
 
-        var positionDechet = Math.floor(Math.random()*indexDechet);
-        enemy.loadTexture(dechets[positionDechet]);
-        enemy.key = dechets[positionDechet];
+        var positionDechet = Math.floor(Math.random()*game.pushDechets.indexDechet);
+        enemy.loadTexture(game.pushDechets.dechet[positionDechet]);
+        enemy.key = game.pushDechets.type[positionDechet];
 
         position = position + Math.floor(Math.random()*this.numberOfLane)*110;
 		enemy.anchor.setTo(0.5, 1);
