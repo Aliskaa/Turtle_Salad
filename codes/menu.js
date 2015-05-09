@@ -61,23 +61,19 @@ var menuState = {
 
  	},
 
-	 /*mouseOver:function(){
-     game.add.tween(this.ConfigButton.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
-	 },*/
-
 	PlayB:function(){
 		game.state.start('map');
-		game.add.tween(this.PlayButton.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
+		
 	},
 
-	QuitB: function(){
-		game.state.start('Help');
+	HelpB: function(){
+		game.state.start('help');
 
 	},
 
 	ConfigB:function(){
-	 game.add.tween(this.ConfigButton.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
-	 this.game.state.start('Config');
+	 
+	 this.game.state.start('config');
 
 
 	},

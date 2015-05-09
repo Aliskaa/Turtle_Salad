@@ -1,4 +1,4 @@
-var ConfigState = {
+var configState = {
 
 	preload: function(){
 		//game.load.image('menu', 'assets/fond.png');
