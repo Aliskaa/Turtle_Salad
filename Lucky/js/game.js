@@ -7,6 +7,7 @@ game.global = {
 game.state.add('load', loadState);
 game.state.add('menu', menuState);
 game.state.add('config', configState);
+game.state.add('map', mapState);
 game.state.add('play', playState);
 
 game.state.start('load');

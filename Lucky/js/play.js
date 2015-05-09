@@ -2,6 +2,12 @@ var playState = {
     
 	create: function(){
         
+        this.activatePoubelleM=false;
+        this.activatePoubelleV=true;
+        this.activatePoubelleB=false;
+        this.activatePoubelleJ=true;
+        
+        
 		//game.stage.backgroundColor = '#3498db';
         
         this.background = game.add.sprite(0, 0, 'backgroundGame');
@@ -18,62 +24,80 @@ var playState = {
         this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
         this.nbdechetLabel = game.add.text(30, 50, 'restants : '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
         
-        this.poubelleM = game.add.sprite(790, 100, 'poubelleMF');
-        this.poubelleM.anchor.setTo(0,1);
-        this.poubelleV = game.add.sprite(840, 100, 'poubelleVF');
-        this.poubelleV.anchor.setTo(0,1);
-        this.poubelleB = game.add.sprite(890, 100, 'poubelleBO');
-        this.poubelleB.anchor.setTo(0,1);
-        this.poubelleJ = game.add.sprite(940, 100, 'poubelleJF');
-        this.poubelleJ.anchor.setTo(0,1);
-		
+        if(this.activatePoubelleM){
+            this.poubelleM = game.add.sprite(790, 100, 'poubelleMO');
+            this.poubelleM.anchor.setTo(0,1);
+        }
+        if(this.activatePoubelleV){
+            this.poubelleV = game.add.sprite(840, 100, 'poubelleVF');
+            this.poubelleV.anchor.setTo(0,1);
+        }
+        if(this.activatePoubelleB){
+            this.poubelleB = game.add.sprite(890, 100, 'poubelleBF');
+            this.poubelleB.anchor.setTo(0,1);
+        }
+        if(this.activatePoubelleJ){    
+            this.poubelleJ = game.add.sprite(940, 100, 'poubelleJF');
+            this.poubelleJ.anchor.setTo(0,1);
+        }
 		this.player = game.add.sprite(game.world.centerX, 475, 'tortue');
 		this.player.anchor.setTo(0.5, 0.5);
 		game.physics.arcade.enable(this.player);
-		this.player.frame = 2;
-        this.player.key = 'tortueB';
+		this.player.frame = 0;
+        this.player.key = 'tortueM';
         
 		this.enemies = game.add.group();
 		this.enemies.enableBody = true;
-		this.enemies.createMultiple(15,'dechetB');
+		this.enemies.createMultiple(15,'dechetM');
         this.nextDechet = 0;
         
 		this.time.events.loop(2200, this.addEnemy, this);
         
         this.numberOfLane = 5;
-        //this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
-        this.Turtle0Button = this.input.keyboard.addKey(Phaser.Keyboard.A);
-        this.Turtle0Button.onDown.add(function(){
-                                        this.player.frame=0;
-                                        this.player.key = 'tortueM';
-                                        this.poubelleJ.loadTexture('poubelleJF');
-                                        this.poubelleB.loadTexture('poubelleBF');
-                                        this.poubelleV.loadTexture('poubelleVF');
-                                        this.poubelleM.loadTexture('poubelleMO');},this);
-        this.Turtle1Button = this.input.keyboard.addKey(Phaser.Keyboard.Z);
-        this.Turtle1Button.onDown.add(function() {
-                                        this.player.frame=1;
-                                        this.player.key = 'tortueV';
-                                        this.poubelleJ.loadTexture('poubelleJF');
-                                        this.poubelleB.loadTexture('poubelleBF');
-                                        this.poubelleV.loadTexture('poubelleVO');
-                                        this.poubelleM.loadTexture('poubelleMF');},this);
-        this.Turtle2Button = this.input.keyboard.addKey(Phaser.Keyboard.E);
-        this.Turtle2Button.onDown.add(function() {
-                                        this.player.frame=2;
-                                        this.player.key = 'tortueB';
-                                        this.poubelleJ.loadTexture('poubelleJF');
-                                        this.poubelleB.loadTexture('poubelleBO');
-                                        this.poubelleV.loadTexture('poubelleVF');
-                                        this.poubelleM.loadTexture('poubelleMF');},this);
-        this.Turtle3Button = this.input.keyboard.addKey(Phaser.Keyboard.R);
-        this.Turtle3Button.onDown.add(function() {
-                                        this.player.frame=3;
-                                        this.player.key = 'tortueJ';
-                                        this.poubelleJ.loadTexture('poubelleJO');
-                                        this.poubelleB.loadTexture('poubelleBF');
-                                        this.poubelleV.loadTexture('poubelleVF');
-                                        this.poubelleM.loadTexture('poubelleMF');},this);
+        
+        
+        if(typeof this.poubelleM  != "undefined"){
+            this.Turtle0Button = this.input.keyboard.addKey(Phaser.Keyboard.A);
+            this.Turtle0Button.onDown.add(function(){
+                                            this.player.frame=0;
+                                            this.player.key = 'tortueM';
+                                            if(typeof this.poubelleJ  != "undefined") this.poubelleJ.loadTexture('poubelleJF');
+                                            if(typeof this.poubelleB  != "undefined") this.poubelleB.loadTexture('poubelleBF');
+                                            if(typeof this.poubelleV  != "undefined") this.poubelleV.loadTexture('poubelleVF');
+                                            this.poubelleM.loadTexture('poubelleMO');},this);
+        }
+        if(typeof this.poubelleV  != "undefined"){
+            this.Turtle0Button = this.input.keyboard.addKey(Phaser.Keyboard.Z);
+            this.Turtle0Button.onDown.add(function(){
+                                            this.player.frame=1;
+                                            this.player.key = 'tortueV';
+                                            if(typeof this.poubelleJ  != "undefined") this.poubelleJ.loadTexture('poubelleJF');
+                                            if(typeof this.poubelleB  != "undefined") this.poubelleB.loadTexture('poubelleBF');
+                                            if(typeof this.poubelleM  != "undefined") this.poubelleM.loadTexture('poubelleMF');
+                                            this.poubelleV.loadTexture('poubelleVO');},this);
+        }
+       if(typeof this.poubelleB  != "undefined"){
+            this.Turtle0Button = this.input.keyboard.addKey(Phaser.Keyboard.E);
+            this.Turtle0Button.onDown.add(function(){
+                                            this.player.frame=2;
+                                            this.player.key = 'tortueB';
+                                            if(typeof this.poubelleJ  != "undefined") this.poubelleJ.loadTexture('poubelleJF');
+                                            if(typeof this.poubelleM  != "undefined") this.poubelleM.loadTexture('poubelleMF');
+                                            if(typeof this.poubelleV  != "undefined") this.poubelleV.loadTexture('poubelleVF');
+                                            this.poubelleB.loadTexture('poubelleBO');},this);
+        }
+        if(typeof this.poubelleJ  != "undefined"){
+            this.Turtle0Button = this.input.keyboard.addKey(Phaser.Keyboard.R);
+            this.Turtle0Button.onDown.add(function(){
+                                            this.player.frame=3;
+                                            this.player.key = 'tortueJ';
+                                            if(typeof this.poubelleM  != "undefined") this.poubelleM.loadTexture('poubelleMF');
+                                            if(typeof this.poubelleB  != "undefined") this.poubelleB.loadTexture('poubelleBF');
+                                            if(typeof this.poubelleV  != "undefined") this.poubelleV.loadTexture('poubelleVF');
+                                            this.poubelleJ.loadTexture('poubelleJO');},this);
+        }
+        
+        
 	},
 
 	update: function(){
@@ -93,9 +117,33 @@ var playState = {
 		if (!enemy) {
 			return;
 		}
+        
+        var dechets = null;
+        var nbdechet = 0;
+        
+        dechets = [];
+        nbdechet = 0;
+        
+        if(this.activatePoubelleM){
+            dechets.push('dechetM');
+            nbdechet+=1;
+        }
+        if(this.activatePoubelleV){
+            dechets.push('dechetV');
+            nbdechet+=1;
+        }
+        if(this.activatePoubelleB){
+            dechets.push('dechetB');
+            nbdechet+=1;
+        }
+       if(this.activatePoubelleJ){
+            dechets.push('dechetJ');
+            nbdechet+=1;
+        }
 
-        var dechets = ['dechetJ', 'dechetV', 'dechetB', 'dechetM'];
-        var positionDechet = Math.floor(Math.random()*4);
+
+        //var dechets = ['dechetJ', 'dechetV', 'dechetB', 'dechetM'];
+        var positionDechet = Math.floor(Math.random()*nbdechet);
         enemy.loadTexture(dechets[positionDechet]);
         enemy.key = dechets[positionDechet];
 
@@ -131,27 +179,29 @@ var playState = {
     dieDechet: function(player,enemy){
         enemy.kill();
         
-        if(player.key == 'tortueJ' & enemy.key == 'dechetJ'){
+        if(player.key == 'tortueJ' & enemy.key == 'dechetJ' & this.activatePoubelleJ){
             this.score += 1;
             this.scoreLabel.text = 'score : '+this.score+' / '+this.nbdechet;
             game.add.tween(this.poubelleJ.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
         }
-        else if(player.key == 'tortueB' & enemy.key == 'dechetB'){
+        else if(player.key == 'tortueB' & enemy.key == 'dechetB' & this.activatePoubelleB){
             this.score += 1;
             this.scoreLabel.text = 'score : '+this.score+' / '+this.nbdechet;
             game.add.tween(this.poubelleB.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
         }
-        else if(player.key == 'tortueV' & enemy.key == 'dechetV'){
+        else if(player.key == 'tortueV' & enemy.key == 'dechetV' & this.activatePoubelleV){
             this.score += 1;
             this.scoreLabel.text = 'score : '+this.score+' / '+this.nbdechet;
             game.add.tween(this.poubelleV.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
         }
-        else if(player.key == 'tortueM' & enemy.key == 'dechetM'){
+        else if(player.key == 'tortueM' & enemy.key == 'dechetM' & this.activatePoubelleM){
             this.score += 1;
             this.scoreLabel.text = 'score : '+this.score+' / '+this.nbdechet;
             game.add.tween(this.poubelleM.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
         }
+        else {
+            game.add.tween(this.player).to( { angle: 360 }, 750, Phaser.Easing.Linear.None, true);
+            game.add.tween(this.player.scale).to( { x: 1.5, y: 1.5 }, 325).to({x: 1, y: 1}, 325).start();
+        }
     }
-
-	
 };
