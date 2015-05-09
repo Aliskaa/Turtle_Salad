@@ -17,6 +17,14 @@ var menuState = {
 			 this.ConfigButton.anchor.setTo(0.5,0.5);
 			 this.ConfigButton.input.useHandCursor = true;
 			 this.ConfigButton.inputEnabled = true;
+        
+            game.win = {
+                win1: false,
+                win2: false,
+                win3: false,
+                win4: false,
+                win5: false
+            };
 
 	},
 
@@ -37,11 +45,8 @@ var menuState = {
  	},
 
 	PlayB:function(){
-<<<<<<< HEAD
         game.add.tween(this.PlayButton.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
-=======
-        
->>>>>>> origin/master
+
 		game.state.start('map');
 	},
 

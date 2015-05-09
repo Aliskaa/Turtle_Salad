@@ -2,14 +2,6 @@ var playState = {
     
 	create: function(){
         
-        this.activatePoubelleM=false;
-        this.activatePoubelleV=true;
-        this.activatePoubelleB=false;
-        this.activatePoubelleJ=true;
-        
-        
-		//game.stage.backgroundColor = '#3498db';
-        
         this.background = game.add.sprite(0, 0, 'backgroundGame');
         this.background = game.add.sprite(10, 10, 'panneauScores');
         this.background = game.add.sprite(785, 10, 'panneauPoubelles');
@@ -18,25 +10,29 @@ var playState = {
 		
 		this.cursor = game.input.keyboard.createCursorKeys();
         
-        this.nbdechet = 15;
+        this.nbdechet = 2;
+        this.nbdechetJ = 0;
+        this.nbdechetB = 0;
+        this.nbdechetV = 0;
+        this.nbdechetM = 0;
         this.score = 0;
         this.dechetrestant = this.nbdechet;
         this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
         this.nbdechetLabel = game.add.text(30, 50, 'restants : '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
         
-        if(this.activatePoubelleM){
+        if(game.global.activatePoubelleM){
             this.poubelleM = game.add.sprite(790, 100, 'poubelleMO');
             this.poubelleM.anchor.setTo(0,1);
         }
-        if(this.activatePoubelleV){
+        if(game.global.activatePoubelleV){
             this.poubelleV = game.add.sprite(840, 100, 'poubelleVF');
             this.poubelleV.anchor.setTo(0,1);
         }
-        if(this.activatePoubelleB){
+        if(game.global.activatePoubelleB){
             this.poubelleB = game.add.sprite(890, 100, 'poubelleBF');
             this.poubelleB.anchor.setTo(0,1);
         }
-        if(this.activatePoubelleJ){    
+        if(game.global.activatePoubelleJ){    
             this.poubelleJ = game.add.sprite(940, 100, 'poubelleJF');
             this.poubelleJ.anchor.setTo(0,1);
         }
@@ -48,13 +44,12 @@ var playState = {
         
 		this.enemies = game.add.group();
 		this.enemies.enableBody = true;
-		this.enemies.createMultiple(15,'dechetM');
+		this.enemies.createMultiple(this.nbdechet,'dechetM');
         this.nextDechet = 0;
         
-		this.time.events.loop(2200, this.addEnemy, this);
+		this.trashLoop = this.time.events.loop(2200, this.addEnemy, this);
         
         this.numberOfLane = 5;
-        
         
         if(typeof this.poubelleM  != "undefined"){
             this.Turtle0Button = this.input.keyboard.addKey(Phaser.Keyboard.A);
@@ -96,8 +91,6 @@ var playState = {
                                             if(typeof this.poubelleV  != "undefined") this.poubelleV.loadTexture('poubelleVF');
                                             this.poubelleJ.loadTexture('poubelleJO');},this);
         }
-        
-        
 	},
 
 	update: function(){
@@ -105,8 +98,29 @@ var playState = {
         
 		this.movePlayer();
         
-        if(this.dechetrestant == 0){
-            game.state.start('menu');
+        if(this.dechetrestant == -1){
+            // game.state.start('menu');
+            game.time.events.remove(this.trashLoop);
+            //this.input.keyboard.destroy();
+            this.scorePopUp = game.add.sprite(500, 275, 'panneauScoresPopUp');
+            this.scorePopUp.anchor.setTo(0.5,0.5);
+            this.poubelleMPopUp = game.add.sprite(350, 275, 'poubelleMF');
+			this.poubelleMPopUp.anchor.setTo(0.5,0.5);
+			this.poubelleVPopUp = game.add.sprite(350, 375, 'poubelleVF');
+			this.poubelleVPopUp.anchor.setTo(0.5,0.5);
+			this.poubelleBPopUp = game.add.sprite(550, 275, 'poubelleBF');
+			this.poubelleBPopUp.anchor.setTo(0.5,0.5);
+			this.poubelleJPopUp = game.add.sprite(550, 375, 'poubelleJF');
+			this.poubelleJPopUp.anchor.setTo(0.5,0.5);
+			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '18px Arial', fill: '#000000'});
+			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
+			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});
+			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});
+            
+            //game.win.win1 = true;
+            
+            //game.state.start('map');
+		   
         }
 	},
 
@@ -124,25 +138,24 @@ var playState = {
         dechets = [];
         nbdechet = 0;
         
-        if(this.activatePoubelleM){
+        if(game.global.activatePoubelleM){
             dechets.push('dechetM');
             nbdechet+=1;
         }
-        if(this.activatePoubelleV){
+        if(game.global.activatePoubelleV){
             dechets.push('dechetV');
             nbdechet+=1;
         }
-        if(this.activatePoubelleB){
+        if(game.global.activatePoubelleB){
             dechets.push('dechetB');
             nbdechet+=1;
         }
-       if(this.activatePoubelleJ){
+       if(game.global.activatePoubelleJ){
             dechets.push('dechetJ');
             nbdechet+=1;
         }
 
 
-        //var dechets = ['dechetJ', 'dechetV', 'dechetB', 'dechetM'];
         var positionDechet = Math.floor(Math.random()*nbdechet);
         enemy.loadTexture(dechets[positionDechet]);
         enemy.key = dechets[positionDechet];
@@ -179,23 +192,27 @@ var playState = {
     dieDechet: function(player,enemy){
         enemy.kill();
         
-        if(player.key == 'tortueJ' & enemy.key == 'dechetJ' & this.activatePoubelleJ){
+        if(player.key == 'tortueJ' & enemy.key == 'dechetJ' & game.global.activatePoubelleJ){
             this.score += 1;
+            this.nbdechetJ += 1;
             this.scoreLabel.text = 'score : '+this.score+' / '+this.nbdechet;
             game.add.tween(this.poubelleJ.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
         }
-        else if(player.key == 'tortueB' & enemy.key == 'dechetB' & this.activatePoubelleB){
+        else if(player.key == 'tortueB' & enemy.key == 'dechetB' & game.global.activatePoubelleB){
             this.score += 1;
+            this.nbdechetB += 1;
             this.scoreLabel.text = 'score : '+this.score+' / '+this.nbdechet;
             game.add.tween(this.poubelleB.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
         }
-        else if(player.key == 'tortueV' & enemy.key == 'dechetV' & this.activatePoubelleV){
+        else if(player.key == 'tortueV' & enemy.key == 'dechetV' & game.global.activatePoubelleV){
             this.score += 1;
+            this.nbdechetV += 1;
             this.scoreLabel.text = 'score : '+this.score+' / '+this.nbdechet;
             game.add.tween(this.poubelleV.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
         }
-        else if(player.key == 'tortueM' & enemy.key == 'dechetM' & this.activatePoubelleM){
+        else if(player.key == 'tortueM' & enemy.key == 'dechetM' & game.global.activatePoubelleM){
             this.score += 1;
+            this.nbdechetM += 1;
             this.scoreLabel.text = 'score : '+this.score+' / '+this.nbdechet;
             game.add.tween(this.poubelleM.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
         }
