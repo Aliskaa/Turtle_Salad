@@ -1,36 +1,29 @@
 var loadState = {
 
 	preload: function(){
-		var loadingLabel = game.add.text(game.world.centerX, 150, 'Loading...',
-				{font: '30px Arial', fill: '#ffffff'});
-		loadingLabel.anchor.setTo(0.5, 0.5);
-
-		var progressBar = game.add.sprite(game.world.centerX, 200, 'progressBar');
-		progressBar.anchor.setTo(0.5, 0.5);
-		game.load.setPreloadSprite(progressBar);
-
-		game.load.spritesheet('player', 'assets/player2.png', 20, 20);
-		game.load.image('coin', 'assets/coin.png');
-		game.load.image('enemy', 'assets/enemy.png');
-		game.load.image('pixel', 'assets/pixel.png');
-		game.load.image('pixel2', 'assets/pixel2.png');
-		game.load.image('pixel3', 'assets/pixel3.png');
-		//game.load.spritesheet('mute', 'assets/muteButton.png', 28, 22);
-		game.load.image('background', 'assets/background.png');
-
-		game.load.audio('jump', ['assets/jump.ogg', 'assets/jump.mp3']);
-		game.load.audio('coin', ['assets/coin.ogg', 'assets/coin.mp3']);
-		game.load.audio('dead', ['assets/dead.ogg', 'assets/dead.mp3']);
-		
-		game.load.image('jumpButton', 'assets/jumpButton.png');
-		game.load.image('rightButton', 'assets/rightButton.png');
-		game.load.image('leftButton', 'assets/leftButton.png');
-
-		game.load.image('tileset', 'assets/tileset.png');
-		game.load.tilemap('map', 'assets/tileset.json', null, Phaser.Tilemap.TILED_JSON);
+		// background
+        game.load.image('background', 'assets/fond_in_game.png');
+		// Player
+		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
+		// Dechets
+        game.load.image('dechetB', 'assets/enemy_bleu.png');
+        game.load.image('dechetJ', 'assets/enemy_jaune.png');
+        game.load.image('dechetV', 'assets/enemy_vert.png');
+        game.load.image('dechetM', 'assets/enemy_marron.png');
+        // Poubelles
+        game.load.image('poubelleJO','assets/pjo.png');
+        game.load.image('poubelleJF','assets/pjf.png');
+        game.load.image('poubelleBO','assets/pbo.png');
+        game.load.image('poubelleBF','assets/pbf.png');
+        game.load.image('poubelleMO','assets/pmo.png');
+        game.load.image('poubelleMF','assets/pmf.png');
+        game.load.image('poubelleVO','assets/pvo.png');
+        game.load.image('poubelleVF','assets/pvf.png');
 	},
 
 	create: function(){
+		game.physics.startSystem(Phaser.Physics.ARCADE);
+
 		game.state.start('menu');
 	}
 };
