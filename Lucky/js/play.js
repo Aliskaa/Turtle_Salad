@@ -1,33 +1,12 @@
-var mainState = {
-    
-	preload: function(){
-        // background
-        game.load.image('background', 'assets/fond_in_game.png');
-		// Player
-		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
-		// Dechets
-        game.load.image('dechetB', 'assets/enemy_bleu.png');
-        game.load.image('dechetJ', 'assets/enemy_jaune.png');
-        game.load.image('dechetV', 'assets/enemy_vert.png');
-        game.load.image('dechetM', 'assets/enemy_marron.png');
-        // Poubelles
-        game.load.image('poubelleJO','assets/pjo.png');
-        game.load.image('poubelleJF','assets/pjf.png');
-        game.load.image('poubelleBO','assets/pbo.png');
-        game.load.image('poubelleBF','assets/pbf.png');
-        game.load.image('poubelleMO','assets/pmo.png');
-        game.load.image('poubelleMF','assets/pmf.png');
-        game.load.image('poubelleVO','assets/pvo.png');
-        game.load.image('poubelleVF','assets/pvf.png');
-	},
-
-    
+var playState = {
     
 	create: function(){
         
 		//game.stage.backgroundColor = '#3498db';
         
-        this.background = game.add.sprite(0, 0, 'background');
+        this.background = game.add.sprite(0, 0, 'backgroundGame');
+        this.background = game.add.sprite(10, 10, 'panneauScores');
+        this.background = game.add.sprite(785, 10, 'panneauPoubelles');
 		
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
@@ -36,8 +15,8 @@ var mainState = {
         this.nbdechet = 15;
         this.score = 0;
         this.dechetrestant = this.nbdechet;
-        this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Arial', fill: '#ffffff'});
-        this.nbdechetLabel = game.add.text(30, 50, 'dechets restants : '+this.nbdechet, {font: '18px Arial', fill: '#ffffff'});
+        this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
+        this.nbdechetLabel = game.add.text(30, 50, 'restants : '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
         
         this.poubelleM = game.add.sprite(790, 100, 'poubelleMF');
         this.poubelleM.anchor.setTo(0,1);
@@ -56,10 +35,8 @@ var mainState = {
         
 		this.enemies = game.add.group();
 		this.enemies.enableBody = true;
-		this.enemies.createMultiple(10,'dechetB');
+		this.enemies.createMultiple(15,'dechetB');
         this.nextDechet = 0;
-        
-        
         
 		this.time.events.loop(2200, this.addEnemy, this);
         
@@ -105,7 +82,7 @@ var mainState = {
 		this.movePlayer();
         
         if(this.dechetrestant == 0){
-            
+            game.state.start('menu');
         }
 	},
 
@@ -131,15 +108,13 @@ var mainState = {
 		enemy.cutOfBoundsKill = true;
         
         this.dechetrestant -= 1;
-        this.nbdechetLabel.text = 'dechets restants : '+this.dechetrestant;
+        this.nbdechetLabel.text = 'restants : '+this.dechetrestant;
         
         this.nextDechet = this.nextDechet + 1;
     },
 
 	movePlayer: function(){
 		this.player.body.velocity.x = 0;
-		
-        
 
 		if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			if(this.player.body.x - 4 >= 200) {
@@ -180,7 +155,3 @@ var mainState = {
 
 	
 };
-
-var game = new Phaser.Game(1000, 550, Phaser.AUTO, 'gameDiv');
-game.state.add('main', mainState);
-game.state.start('main');
