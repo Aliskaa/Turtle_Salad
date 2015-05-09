@@ -30,8 +30,12 @@ var loadState = {
         game.load.image('buttonReturn','assets/fleche_retour.png');
         game.load.image('buttonPlay', 'assets/boutons_jouer1.png');
         game.load.image('buttonHelp', 'assets/boutons_aide1.png');
+        game.load.image('buttonNiveaux', 'assets/bouton_niveaux.png');
         game.load.image('buttonConfig','assets/bouton_config1.png');
+        game.load.image('menu', 'assets/fond_in_game.png');
+        game.load.image('map', 'assets/fond_niveaux.png');
 	},
+
 
 	create: function(){
 		game.physics.startSystem(Phaser.Physics.ARCADE);

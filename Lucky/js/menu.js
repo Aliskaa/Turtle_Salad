@@ -37,16 +37,16 @@ var menuState = {
  	},
 
 	PlayB:function(){
-        game.add.tween(this.PlayButton.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
-		game.state.start('play');
+        
+		game.state.start('map');
 	},
 
-	QuitB: function(){
+	HelpB: function(){
 		game.state.start('help');
 	},
 
 	ConfigB:function(){
-        game.add.tween(this.ConfigButton.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
+        
         this.game.state.start('config');
 	},
 };
