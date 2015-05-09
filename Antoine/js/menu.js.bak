@@ -5,6 +5,8 @@ var menuState = {
 		if(!this.musicIsPlaying){
 			 this.BackSound = game.add.audio('Music');
         	 this.BackSound.play();
+			 //this.BackSound.play('',0,1,true);
+			 //this.BackSound.loop = true;
 			 this.musicIsPlaying = true;
 			}
         background = game.add.sprite(0,0,'backgroundMenu');
@@ -49,7 +51,6 @@ var menuState = {
             dechetB: ['journal'],
             dechetJ: ['conserve']
         }
-        
 		//ButtonSound
 		this.ButtSound = game.add.audio('buttonSound');
 
@@ -72,25 +73,17 @@ var menuState = {
  	},
 
 	PlayB:function(){
-		this.ButtSound.play();
         game.add.tween(this.PlayButton.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
 
 		game.state.start('map');
 	},
 
 	HelpB: function(){
-		this.ButtSound.play();
 		game.state.start('help');
 	},
 
 	ConfigB:function(){
-        this.ButtSound.play();
+        
         this.game.state.start('config');
 	},
-
-	toggleSound: function(){
-		game.sound.mute = ! game.sound.mute;
-		this.muteButton.frame = game.sound.mute ? 1 : 0;
-	},
-
 };
