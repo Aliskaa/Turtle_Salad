@@ -23,6 +23,7 @@ var loadState = {
         // Panneaux
         game.load.image('panneauPoubelles', 'assets/panneau_poubelles.png');
         game.load.image('panneauScores', 'assets/panneau_scores.png');
+		game.load.image('panneauScoresPopUp', 'assets/scores.png');
         // Boutons
         game.load.image('buttonEasy', 'assets/bouton_facile.png');
         game.load.image('buttonNormal', 'assets/bouton_normal.png');
