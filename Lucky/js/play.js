@@ -36,7 +36,7 @@ var playState = {
             this.poubelleJ = game.add.sprite(940, 100, 'poubelleJF');
             this.poubelleJ.anchor.setTo(0,1);
         }
-		this.player = game.add.sprite(game.world.centerX, 475, 'tortue');
+		this.player = game.add.sprite(game.world.centerX, 500, 'tortue');
 		this.player.anchor.setTo(0.5, 0.5);
 		game.physics.arcade.enable(this.player);
 		this.player.frame = 0;
@@ -117,6 +117,7 @@ var playState = {
 			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});
             
+            
             //game.win.win1 = true;
             
             //game.state.start('map');
@@ -126,7 +127,7 @@ var playState = {
 
 	addEnemy: function(){        
         var enemy = this.enemies.getFirstDead();
-		var position = 500-Math.floor(this.numberOfLane/2)*60;
+		var position = 490-Math.floor(this.numberOfLane/2)*110;
 
 		if (!enemy) {
 			return;
@@ -160,7 +161,7 @@ var playState = {
         enemy.loadTexture(dechets[positionDechet]);
         enemy.key = dechets[positionDechet];
 
-        position = position + Math.floor(Math.random()*this.numberOfLane)*60;
+        position = position + Math.floor(Math.random()*this.numberOfLane)*110;
 		enemy.anchor.setTo(0.5, 1);
 		enemy.reset(position, 125);
 		enemy.body.gravity.y = 250;
@@ -179,12 +180,12 @@ var playState = {
 
 		if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			if(this.player.body.x - 4 >= 200) {
-				this.player.body.velocity.x = -200;
+				this.player.body.velocity.x = -300;
 			}
 		}
 		else if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 			if(this.player.body.x + 4 <= 700) {
-				this.player.body.velocity.x = 200;
+				this.player.body.velocity.x = 300;
 			}
 		}
 	},
