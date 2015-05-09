@@ -10,7 +10,7 @@ var playState = {
 		
 		this.cursor = game.input.keyboard.createCursorKeys();
         
-        this.nbdechet = 10;
+        this.nbdechet = 5;
         this.nbdechetJ = 0;
         this.nbdechetB = 0;
         this.nbdechetV = 0;
@@ -247,22 +247,32 @@ var playState = {
                             game.state.start('map');
                         } else {
                             game.win.win5 = true;
+                            game.tortue.x = 764;
+                            game.tortue.y = 43;
                             game.state.start('map');
                         }
                     } else {
                         game.win.win4 = true;
+                        game.tortue.x = 533;
+                        game.tortue.y = 98;
                         game.state.start('map');
                     }
                 } else {
                     game.win.win3 = true;
+                    game.tortue.x = 531;
+                    game.tortue.y = 350;
                     game.state.start('map');
                 }
             } else {
                 game.win.win2 = true;
+                game.tortue.x = 253;
+                game.tortue.y = 126;
                 game.state.start('map');
             }
         } else {
             game.win.win1 = true;
+            game.tortue.x = 59;
+            game.tortue.y = 349;
             game.state.start('map');
         }
     }

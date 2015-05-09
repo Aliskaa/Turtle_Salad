@@ -7,6 +7,7 @@ var loadState = {
 		game.load.image('backgroundHelp', 'assets/aidejeu.png');
 		// Player
 		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
+        game.load.image('tortueMap','assets/tortue_niveaux.png');
 		// Dechets
         game.load.image('dechetB', 'assets/journal.png');
         game.load.image('dechetJ', 'assets/plastique.png');
@@ -24,7 +25,7 @@ var loadState = {
         // Panneaux
         game.load.image('panneauPoubelles', 'assets/panneau_poubelles.png');
         game.load.image('panneauScores', 'assets/panneau_scores.png');
-		game.load.image('panneauScoresPopUp', 'assets/scores.png');
+		game.load.image('panneauScoresPopUp', 'assets/scores.PNG');
         // Boutons
         game.load.image('buttonEasy', 'assets/bouton_facile.png');
         game.load.image('buttonNormal', 'assets/bouton_normal.png');
