@@ -29,10 +29,6 @@ var configState = {
 		 this.ReturnButton.inputEnabled = true;
 		 //this.ReturnButton.width = 250;
 
-		//ButtonSound
-		 this.ButtSound = game.add.audio('buttonSound');
-		 this.ButtSound2 = game.add.audio('buttonSound2');
-
 
 	},
 
@@ -55,23 +51,19 @@ var configState = {
  	},
 
 	Return: function(){
-		this.ButtSound.play();
 		game.state.start('menu');
 	}, 
 
 	Config1: function(){
-		this.ButtSound2.play();
-		this.level = this.level1;
+		 this.level = this.level1;
 	},
 
 	Config2: function(){
-		this.ButtSound2.play();
-	 	this.level = this.level2;		
+	 	 this.level = this.level2;		
 	},
 
 	Config3: function(){
-		this.ButtSound2.play();
-		this.level = this.level3;
+		 this.level = this.level3;
 
 		
 	},

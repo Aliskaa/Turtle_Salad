@@ -64,6 +64,9 @@ var mapState = {
         
         this.tortueMap = game.add.sprite(game.tortue.x,game.tortue.y,'tortueMap');
         this.tortueMap.anchor.setTo(0.5, 0.5);
+
+		//ButtonSound
+		this.ButtSound = game.add.audio('buttonSound');
     },
 
     update: function(){
@@ -95,6 +98,7 @@ var mapState = {
  	},
 
  	Return: function(){
+		this.ButtSound.play();
 		game.state.start('menu');
 
 	}, 
@@ -106,6 +110,8 @@ var mapState = {
             activatePoubelleB:false,
             activatePoubelleJ:false
 		};
+		this.ButtSound.play();
+		game.state.start('play');
         var PC = game.add.sprite(500, 275,'PC1');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -119,6 +125,8 @@ var mapState = {
             activatePoubelleB :false,
             activatePoubelleJ :false
 		};
+		this.ButtSound.play();
+		game.state.start('play');
         var PC = game.add.sprite(500, 275,'PC2');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -132,6 +140,8 @@ var mapState = {
             activatePoubelleB:false,
             activatePoubelleJ:false
 		};
+		this.ButtSound.play();
+		game.state.start('play');
         game.dechets.dechetV = ['bouteille_verre','bocal'];
         var PC = game.add.sprite(500, 275,'PC3');
         PC.anchor.setTo(0.5,0.5);
@@ -147,6 +157,8 @@ var mapState = {
             activatePoubelleB:true,
             activatePoubelleJ:false
 		};
+		this.ButtSound.play();
+		game.state.start('play');
         var PC = game.add.sprite(500, 275,'PC4');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -161,6 +173,8 @@ var mapState = {
             activatePoubelleB:true,
             activatePoubelleJ:true
 		};
+		this.ButtSound.play();
+		game.state.start('play');
         var PC = game.add.sprite(500, 275,'PC5');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -168,6 +182,8 @@ var mapState = {
 	},
 
 	playLevel6:function(){
+		this.ButtSound.play();
+		game.state.start('play');
         game.dechets.dechetJ = ['conserve','lait'];
         var PC = game.add.sprite(500, 275,'PC6');
         PC.anchor.setTo(0.5,0.5);
