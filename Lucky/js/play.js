@@ -10,7 +10,7 @@ var playState = {
 		
 		this.cursor = game.input.keyboard.createCursorKeys();
         
-        this.nbdechet = 5;
+        this.nbdechet = game.difficulty.numberOfTrash;
         this.nbdechetJ = 0;
         this.nbdechetB = 0;
         this.nbdechetV = 0;
@@ -127,6 +127,9 @@ var playState = {
 			this.poubelleBPopUp.anchor.setTo(0.5,0.5);
 			this.poubelleJPopUp = game.add.sprite(550, 375, 'poubelleJF');
 			this.poubelleJPopUp.anchor.setTo(0.5,0.5);
+            this.pourcent = this.score/this.nbdechet * 100;
+            this.nbdechetpourcent = game.add.text(500, 215, 'Tu as '+this.pourcent+' %', {font: '30px Arial', fill: '#000000'});
+            this.nbdechetpourcent.anchor.setTo(0.5,0.5);
 			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});

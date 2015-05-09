@@ -1,12 +1,7 @@
 var menuState = {
 
 	create: function(){
-		//BackSound
-		if(!this.musicIsPlaying){
-			 this.BackSound = game.add.audio('Music');
-        	 this.BackSound.play();
-			 this.musicIsPlaying = true;
-			}
+		
         background = game.add.sprite(0,0,'backgroundMenu');
 
         this.PlayButton = game.add.button(740,155,'buttonPlay', this.PlayB,this);

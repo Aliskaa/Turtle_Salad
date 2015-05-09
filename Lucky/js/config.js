@@ -63,6 +63,7 @@ var configState = {
 		this.ButtSound2.play();
 		game.difficulty.trashPopFrequency = 2200;
 		game.difficulty.gravityDifficulty=120;
+        game.difficulty.numberOfTrash=15;
 		game.state.start('menu');
 	},
 
@@ -70,6 +71,7 @@ var configState = {
 		this.ButtSound2.play();
 		game.difficulty.trashPopFrequency = 1800;
 		game.difficulty.gravityDifficulty=120;
+        game.difficulty.numberOfTrash=25;
 		game.state.start('menu');
 	},
 
@@ -77,6 +79,7 @@ var configState = {
 		this.ButtSound2.play();
 		game.difficulty.trashPopFrequency = 1000;
 		game.difficulty.gravityDifficulty=120;
+        game.difficulty.numberOfTrash=40;
 		game.state.start('menu');
 	},
 };

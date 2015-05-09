@@ -67,7 +67,8 @@ var loadState = {
 	create: function(){
 		game.difficulty = {
 			trashPopFrequency: 2200,
-			gravityDifficulty: 120
+			gravityDifficulty: 120,
+            numberOfTrash: 15
 		}
         
         game.win = {
@@ -79,6 +80,11 @@ var loadState = {
             win6: false
         };
 
+        //BackSound
+        this.BackSound = game.add.audio('Music');
+        this.BackSound.loop=true;
+        this.BackSound.play();
+        
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.state.start('menu');
 	}
