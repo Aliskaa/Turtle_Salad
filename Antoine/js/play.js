@@ -10,13 +10,14 @@ var playState = {
 		
 		this.cursor = game.input.keyboard.createCursorKeys();
         
-        this.nbdechet = 2;
+        this.nbdechet = 5;
         this.nbdechetJ = 0;
         this.nbdechetB = 0;
         this.nbdechetV = 0;
         this.nbdechetM = 0;
         this.score = 0;
         this.dechetrestant = this.nbdechet;
+		this.deadTrash=0;
         this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
         this.nbdechetLabel = game.add.text(30, 50, 'restants : '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
         
@@ -46,8 +47,8 @@ var playState = {
 		this.enemies.enableBody = true;
 		this.enemies.createMultiple(this.nbdechet,'dechetM');
         this.nextDechet = 0;
-        
-		this.trashLoop = this.time.events.loop(2200, this.addEnemy, this);
+
+		this.trashLoop = this.time.events.loop(game.difficulty.trashPopFrequency, this.addEnemy, this);
         
         this.numberOfLane = 5;
         
@@ -91,6 +92,13 @@ var playState = {
                                             if(typeof this.poubelleV  != "undefined") this.poubelleV.loadTexture('poubelleVF');
                                             this.poubelleJ.loadTexture('poubelleJO');},this);
         }
+		
+		//this.righButton = this.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+          //  this.righButton.onDown.add(function(){
+		//								game.add.tween(this.player).to( { angle: 15 }, 100, Phaser.Easing.Linear.None, true);
+			//							},this);
+
+		
 	},
 
 	update: function(){
@@ -98,9 +106,11 @@ var playState = {
         
 		this.movePlayer();
         
-        if(this.dechetrestant == -1){
+        if(this.dechetrestant == 0){
             // game.state.start('menu');
             game.time.events.remove(this.trashLoop);
+		}
+		if(this.deadTrash == this.nbdechet){
             //this.input.keyboard.destroy();
             this.scorePopUp = game.add.sprite(500, 275, 'panneauScoresPopUp');
             this.scorePopUp.anchor.setTo(0.5,0.5);
@@ -116,13 +126,12 @@ var playState = {
 			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});
-            
+        }    
             
             //game.win.win1 = true;
             
             //game.state.start('map');
-		   
-        }
+
 	},
 
 	addEnemy: function(){        
@@ -134,41 +143,41 @@ var playState = {
 		}
         
         var dechets = null;
-        var nbdechet = 0;
+        var indexDechet = 0;
         
         dechets = [];
-        nbdechet = 0;
+        indexDechet = 0;
         
         if(game.global.activatePoubelleM){
             dechets.push('dechetM');
-            nbdechet+=1;
+            indexDechet+=1;
         }
         if(game.global.activatePoubelleV){
             dechets.push('dechetV');
-            nbdechet+=1;
+            indexDechet+=1;
         }
         if(game.global.activatePoubelleB){
             dechets.push('dechetB');
-            nbdechet+=1;
+            indexDechet+=1;
         }
        if(game.global.activatePoubelleJ){
             dechets.push('dechetJ');
-            nbdechet+=1;
+            indexDechet+=1;
         }
 
-
-        var positionDechet = Math.floor(Math.random()*nbdechet);
+        var positionDechet = Math.floor(Math.random()*indexDechet);
         enemy.loadTexture(dechets[positionDechet]);
         enemy.key = dechets[positionDechet];
 
         position = position + Math.floor(Math.random()*this.numberOfLane)*110;
 		enemy.anchor.setTo(0.5, 1);
 		enemy.reset(position, 125);
-		enemy.body.gravity.y = 250;
+		enemy.body.gravity.y = game.difficulty.gravityDifficulty;
 		enemy.body.bounce.x = 1;
 		enemy.checkWorldBounds = true;
 		enemy.cutOfBoundsKill = true;
-        
+        enemy.events.onOutOfBounds.add(this.trashOutOfBounds, this);
+		
         this.dechetrestant -= 1;
         this.nbdechetLabel.text = 'restants : '+this.dechetrestant;
         
@@ -177,16 +186,21 @@ var playState = {
 
 	movePlayer: function(){
 		this.player.body.velocity.x = 0;
-
+		
+	
 		if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			if(this.player.body.x - 4 >= 200) {
 				this.player.body.velocity.x = -300;
+				game.add.tween(this.player).to( { angle: -40 }, 100, Phaser.Easing.Linear.None, true);
 			}
 		}
 		else if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 			if(this.player.body.x + 4 <= 700) {
 				this.player.body.velocity.x = 300;
+				game.add.tween(this.player).to( { angle: 40 }, 100, Phaser.Easing.Linear.None, true);
 			}
+		}else{
+			game.add.tween(this.player).to( { angle: 0 }, 100, Phaser.Easing.Linear.None, true);
 		}
 	},
     
@@ -221,5 +235,11 @@ var playState = {
             game.add.tween(this.player).to( { angle: 360 }, 750, Phaser.Easing.Linear.None, true);
             game.add.tween(this.player.scale).to( { x: 1.5, y: 1.5 }, 325).to({x: 1, y: 1}, 325).start();
         }
-    }
+		this.deadTrash+=1;
+    },
+	
+	trashOutOfBounds: function(enemy){
+		enemy.kill();
+		this.deadTrash+=1;
+	},
 };
