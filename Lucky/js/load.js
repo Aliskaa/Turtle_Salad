@@ -7,8 +7,8 @@ var loadState = {
 		// Player
 		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
 		// Dechets
-        game.load.image('dechetB', 'assets/enemy_bleu.png');
-        game.load.image('dechetJ', 'assets/enemy_jaune.png');
+        game.load.image('dechetB', 'assets/journal.png');
+        game.load.image('dechetJ', 'assets/plastique.png');
         game.load.image('dechetV', 'assets/bouteille_verre.png');
         game.load.image('dechetM', 'assets/pomme.png');
         // Poubelles
