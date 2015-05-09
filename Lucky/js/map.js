@@ -30,17 +30,29 @@ var mapState = {
 		     this.Level4Button = game.add.button(534,350,'buttonlevel4', this.playLevel4,this);
 		     this.Level4Button.anchor.setTo(0.5,0.5);
 		     this.Level4Button.input.useHandCursor = true;
-		     this.Level4Button.inputEnabled = false;
+            if(game.win.win3){
+			     this.Level4Button.inputEnabled = true;
+            } else {
+                this.Level4Button.inputEnabled = false;
+            }
 
 		     this.Level5Button = game.add.button(532,98,'buttonlevel5', this.playLevel5,this);
 		     this.Level5Button.anchor.setTo(0.5,0.5);
 		     this.Level5Button.input.useHandCursor = true;
-		     this.Level5Button.inputEnabled = false;
+            if(game.win.win4){
+			     this.Level5Button.inputEnabled = true;
+            } else {
+                this.Level5Button.inputEnabled = false;
+            }
 
 		     this.Level6Button = game.add.button(765,46.8,'buttonlevel6', this.playLevel6,this);
 		     this.Level6Button.anchor.setTo(0.5,0.5);
 		     this.Level6Button.input.useHandCursor = true;
-		     this.Level6Button.inputEnabled = false;
+            if(game.win.win5){
+			     this.Level6Button.inputEnabled = true;
+            } else {
+                this.Level6Button.inputEnabled = false;
+            }
 
 		     this.ReturnButton = game.add.button(80,475,'buttonReturn', this.Return,this);
 		 	 this.ReturnButton.anchor.setTo(0.5,0.5);

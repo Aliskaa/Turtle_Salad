@@ -41,6 +41,9 @@ var loadState = {
         game.load.image('buttonConfig','assets/bouton_config1.png');
         game.load.image('menu', 'assets/fond_in_game.png');
         game.load.image('map', 'assets/fond_niveaux.png');
+        // Messages
+        game.load.image('Bravo', 'assets/bravo.png');
+        game.load.image('Recommencer', 'assets/recommencer.png');
 	},
 
 

@@ -10,7 +10,7 @@ var playState = {
 		
 		this.cursor = game.input.keyboard.createCursorKeys();
         
-        this.nbdechet = 2;
+        this.nbdechet = 10;
         this.nbdechetJ = 0;
         this.nbdechetB = 0;
         this.nbdechetV = 0;
@@ -104,6 +104,18 @@ var playState = {
             //this.input.keyboard.destroy();
             this.scorePopUp = game.add.sprite(500, 275, 'panneauScoresPopUp');
             this.scorePopUp.anchor.setTo(0.5,0.5);
+            if(this.score/this.nbdechet >= 0.8){
+                this.messagePopUp = game.add.sprite(500, 150, 'Bravo');
+                this.messagePopUp.anchor.setTo(0.5, 0.5);
+                this.buttonSuivant = game.add.button(500,450,'buttonPlay', this.winGame,this);
+                this.buttonSuivant.anchor.setTo(0.5, 0.5);
+            } else {
+                this.messagePopUp = game.add.sprite(500, 150, 'Recommencer');
+                this.messagePopUp.anchor.setTo(0.5, 0.5);
+                this.buttonSuivant = game.add.button(500,450,'buttonPlay', this.loseGame,this);
+                this.buttonSuivant.anchor.setTo(0.5, 0.5);
+            }
+            this.messagePopUp.anchor.setTo(0.5, 0.5);
             this.poubelleMPopUp = game.add.sprite(350, 275, 'poubelleMF');
 			this.poubelleMPopUp.anchor.setTo(0.5,0.5);
 			this.poubelleVPopUp = game.add.sprite(350, 375, 'poubelleVF');
@@ -115,13 +127,7 @@ var playState = {
 			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});
-			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});
-            
-            
-            //game.win.win1 = true;
-            
-            //game.state.start('map');
-		   
+			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});		   
         }
 	},
 
@@ -170,7 +176,11 @@ var playState = {
 		enemy.cutOfBoundsKill = true;
         
         this.dechetrestant -= 1;
-        this.nbdechetLabel.text = 'restants : '+this.dechetrestant;
+        
+        if(this.dechetrestant >= 0){
+            this.nbdechetLabel.text = 'restants : '+this.dechetrestant;
+        }
+        
         
         this.nextDechet = this.nextDechet + 1;
     },
@@ -220,6 +230,40 @@ var playState = {
         else {
             game.add.tween(this.player).to( { angle: 360 }, 750, Phaser.Easing.Linear.None, true);
             game.add.tween(this.player.scale).to( { x: 1.5, y: 1.5 }, 325).to({x: 1, y: 1}, 325).start();
+        }
+    },
+    
+    loseGame: function(){
+        game.state.start('play');
+    },
+    
+    winGame: function(){
+        if(game.win.win1){
+            if(game.win.win2){
+                if(game.win.win3){
+                    if(game.win.win4){
+                        if(game.win.win5){
+                            game.win.win6 = true;
+                            game.state.start('map');
+                        } else {
+                            game.win.win5 = true;
+                            game.state.start('map');
+                        }
+                    } else {
+                        game.win.win4 = true;
+                        game.state.start('map');
+                    }
+                } else {
+                    game.win.win3 = true;
+                    game.state.start('map');
+                }
+            } else {
+                game.win.win2 = true;
+                game.state.start('map');
+            }
+        } else {
+            game.win.win1 = true;
+            game.state.start('map');
         }
     }
 };
