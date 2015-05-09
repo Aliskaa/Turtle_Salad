@@ -1,30 +1,35 @@
 var menuState = {
 
 	create: function(){
-		     background = game.add.sprite(0,0,'backgroundMenu');
+        background = game.add.sprite(0,0,'backgroundMenu');
 
-		     this.PlayButton = game.add.button(740,155,'buttonPlay', this.PlayB,this);
-		     this.PlayButton.anchor.setTo(0.5,0.5);
-		     this.PlayButton.input.useHandCursor = true;
-			 this.PlayButton.inputEnabled = true;
-		     
-		     this.HelpButton = game.add.button(740,215,'buttonHelp', this.HelpB,this);
-		     this.HelpButton.anchor.setTo(0.5,0.5);
-			 this.HelpButton.input.useHandCursor = true;
-			 this.HelpButton.inputEnabled = true;
+        this.PlayButton = game.add.button(740,155,'buttonPlay', this.PlayB,this);
+        this.PlayButton.anchor.setTo(0.5,0.5);
+        this.PlayButton.input.useHandCursor = true;
+        this.PlayButton.inputEnabled = true;
 
-			 this.ConfigButton =game.add.button(740,275,'buttonConfig', this.ConfigB,this);
-			 this.ConfigButton.anchor.setTo(0.5,0.5);
-			 this.ConfigButton.input.useHandCursor = true;
-			 this.ConfigButton.inputEnabled = true;
+        this.HelpButton = game.add.button(740,215,'buttonHelp', this.HelpB,this);
+        this.HelpButton.anchor.setTo(0.5,0.5);
+        this.HelpButton.input.useHandCursor = true;
+        this.HelpButton.inputEnabled = true;
+
+        this.ConfigButton =game.add.button(740,275,'buttonConfig', this.ConfigB,this);
+        this.ConfigButton.anchor.setTo(0.5,0.5);
+        this.ConfigButton.input.useHandCursor = true;
+        this.ConfigButton.inputEnabled = true;
+
+        game.win = {
+            win1: false,
+            win2: false,
+            win3: false,
+            win4: false,
+            win5: false
+        };
         
-            game.win = {
-                win1: false,
-                win2: false,
-                win3: false,
-                win4: false,
-                win5: false
-            };
+        game.tortue = {
+            x: 278,
+            y:430
+        };
 
 	},
 
