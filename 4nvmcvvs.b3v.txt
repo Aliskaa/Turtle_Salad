@@ -1,0 +1,183 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+Conflicts:
+	Lucky/js/map.js
+	Lucky/js/menu.js
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 8 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   Antoine/assets/bouton_config1.PNG
+#	new file:   Antoine/assets/bouton_difficile.PNG
+#	new file:   Antoine/assets/bouton_facile.PNG
+#	new file:   Antoine/assets/bouton_normal.PNG
+#	new file:   Antoine/assets/bouton_retour2.png
+#	new file:   Antoine/assets/boutons_aide.png
+#	new file:   Antoine/assets/boutons_aide1.png
+#	new file:   Antoine/assets/boutons_aide2.png
+#	new file:   Antoine/assets/boutons_jouer.PNG
+#	new file:   Antoine/assets/boutons_jouer1.PNG
+#	new file:   Antoine/assets/boutons_jouer2.PNG
+#	new file:   Antoine/assets/boutons_quitter.png
+#	new file:   Antoine/assets/boutons_quitter1.png
+#	new file:   Antoine/assets/boutons_quitter2.png
+#	new file:   Antoine/assets/enemy_bleu.png
+#	new file:   Antoine/assets/enemy_jaune.png
+#	new file:   Antoine/assets/enemy_marron.png
+#	new file:   Antoine/assets/enemy_vert.png
+#	new file:   Antoine/assets/fleche_retour.PNG
+#	new file:   Antoine/assets/fond.png
+#	new file:   Antoine/assets/fond_in_game.png
+#	renamed:    ressources/panneau_poubelles.PNG -> Antoine/assets/panneau_poubelles.png
+#	renamed:    ressources/panneau_scores.PNG -> Antoine/assets/panneau_scores.PNG
+#	new file:   Antoine/assets/pbf.png
+#	new file:   Antoine/assets/pbo.png
+#	new file:   Antoine/assets/pjf.PNG
+#	new file:   Antoine/assets/pjo.png
+#	new file:   Antoine/assets/pmf.png
+#	new file:   Antoine/assets/pmo.png
+#	new file:   Antoine/assets/pvf.PNG
+#	new file:   Antoine/assets/pvo.PNG
+#	renamed:    Antoine/codes/assets/sprite_tortue.png -> Antoine/assets/sprite_tortue.png
+#	new file:   Antoine/index.html
+#	new file:   Antoine/js/config.js
+#	new file:   Antoine/js/game.js
+#	new file:   Antoine/js/load.js
+#	new file:   Antoine/js/map.js
+#	new file:   Antoine/js/menu.js
+#	new file:   Antoine/js/play.js
+#	renamed:    Antoine/codes/assets/background.png -> Antoine/old/codes/assets/background.png
+#	renamed:    Antoine/codes/assets/coin.mp3 -> Antoine/old/codes/assets/coin.mp3
+#	renamed:    Antoine/codes/assets/coin.ogg -> Antoine/old/codes/assets/coin.ogg
+#	renamed:    Antoine/codes/assets/coin.png -> Antoine/old/codes/assets/coin.png
+#	renamed:    Antoine/codes/assets/dead.mp3 -> Antoine/old/codes/assets/dead.mp3
+#	renamed:    Antoine/codes/assets/dead.ogg -> Antoine/old/codes/assets/dead.ogg
+#	renamed:    Antoine/codes/assets/enemy.png -> Antoine/old/codes/assets/enemy.png
+#	renamed:    Antoine/codes/assets/jump.mp3 -> Antoine/old/codes/assets/jump.mp3
+#	renamed:    Antoine/codes/assets/jump.ogg -> Antoine/old/codes/assets/jump.ogg
+#	renamed:    Antoine/codes/assets/jumpButton.png -> Antoine/old/codes/assets/jumpButton.png
+#	renamed:    Antoine/codes/assets/leftButton.png -> Antoine/old/codes/assets/leftButton.png
+#	renamed:    Antoine/codes/assets/map.json -> Antoine/old/codes/assets/map.json
+#	renamed:    Antoine/codes/assets/muteButton.png -> Antoine/old/codes/assets/muteButton.png
+#	renamed:    Antoine/codes/assets/pixel.png -> Antoine/old/codes/assets/pixel.png
+#	renamed:    Antoine/codes/assets/pixel2.png -> Antoine/old/codes/assets/pixel2.png
+#	renamed:    Antoine/codes/assets/pixel3.png -> Antoine/old/codes/assets/pixel3.png
+#	renamed:    Antoine/codes/assets/player.png -> Antoine/old/codes/assets/player.png
+#	renamed:    Antoine/codes/assets/player2.png -> Antoine/old/codes/assets/player2.png
+#	renamed:    Antoine/codes/assets/progressBar.png -> Antoine/old/codes/assets/progressBar.png
+#	renamed:    Antoine/codes/assets/rightButton.png -> Antoine/old/codes/assets/rightButton.png
+#	renamed:    Antoine/ressources/sprite_tortue.png -> Antoine/old/codes/assets/sprite_tortue.png
+#	renamed:    Antoine/codes/assets/tileset.json -> Antoine/old/codes/assets/tileset.json
+#	renamed:    Antoine/codes/assets/tileset.png -> Antoine/old/codes/assets/tileset.png
+#	renamed:    Antoine/codes/assets/tortue_base.png -> Antoine/old/codes/assets/tortue_base.png
+#	renamed:    Antoine/codes/assets/wallHorizontal.png -> Antoine/old/codes/assets/wallHorizontal.png
+#	renamed:    Antoine/codes/assets/wallVertical.png -> Antoine/old/codes/assets/wallVertical.png
+#	renamed:    Antoine/codes/index.html -> Antoine/old/codes/index.html
+#	renamed:    Antoine/codes/js/boot.js -> Antoine/old/codes/js/boot.js
+#	renamed:    Antoine/codes/js/game.js -> Antoine/old/codes/js/game.js
+#	renamed:    Antoine/codes/js/load.js -> Antoine/old/codes/js/load.js
+#	renamed:    Antoine/codes/js/menu.js -> Antoine/old/codes/js/menu.js
+#	renamed:    Antoine/codes/js/play.js -> Antoine/old/codes/js/play.js
+#	renamed:    Antoine/codes/main.js -> Antoine/old/codes/main.js
+#	renamed:    Antoine/codes/phaser.min.js -> Antoine/old/codes/phaser.min.js
+#	renamed:    Antoine/exemple/assets/background.png -> Antoine/old/exemple/assets/background.png
+#	renamed:    Antoine/exemple/assets/coin.mp3 -> Antoine/old/exemple/assets/coin.mp3
+#	renamed:    Antoine/exemple/assets/coin.ogg -> Antoine/old/exemple/assets/coin.ogg
+#	renamed:    Antoine/exemple/assets/coin.png -> Antoine/old/exemple/assets/coin.png
+#	renamed:    Antoine/exemple/assets/dead.mp3 -> Antoine/old/exemple/assets/dead.mp3
+#	renamed:    Antoine/exemple/assets/dead.ogg -> Antoine/old/exemple/assets/dead.ogg
+#	renamed:    Antoine/exemple/assets/desktop.ini -> Antoine/old/exemple/assets/desktop.ini
+#	renamed:    Antoine/exemple/assets/enemy.png -> Antoine/old/exemple/assets/enemy.png
+#	renamed:    Antoine/exemple/assets/jump.mp3 -> Antoine/old/exemple/assets/jump.mp3
+#	renamed:    Antoine/exemple/assets/jump.ogg -> Antoine/old/exemple/assets/jump.ogg
+#	renamed:    Antoine/exemple/assets/jumpButton.png -> Antoine/old/exemple/assets/jumpButton.png
+#	renamed:    Antoine/exemple/assets/leftButton.png -> Antoine/old/exemple/assets/leftButton.png
+#	renamed:    Antoine/exemple/assets/map.json -> Antoine/old/exemple/assets/map.json
+#	renamed:    Antoine/exemple/assets/muteButton.png -> Antoine/old/exemple/assets/muteButton.png
+#	renamed:    Antoine/exemple/assets/pixel.png -> Antoine/old/exemple/assets/pixel.png
+#	renamed:    Antoine/exemple/assets/pixel2.png -> Antoine/old/exemple/assets/pixel2.png
+#	renamed:    Antoine/exemple/assets/pixel3.png -> Antoine/old/exemple/assets/pixel3.png
+#	renamed:    Antoine/exemple/assets/player.png -> Antoine/old/exemple/assets/player.png
+#	renamed:    Antoine/exemple/assets/player2.png -> Antoine/old/exemple/assets/player2.png
+#	renamed:    Antoine/exemple/assets/progressBar.png -> Antoine/old/exemple/assets/progressBar.png
+#	renamed:    Antoine/exemple/assets/rightButton.png -> Antoine/old/exemple/assets/rightButton.png
+#	renamed:    Antoine/exemple/assets/tileset.json -> Antoine/old/exemple/assets/tileset.json
+#	renamed:    Antoine/exemple/assets/tileset.png -> Antoine/old/exemple/assets/tileset.png
+#	renamed:    Antoine/exemple/assets/wallHorizontal.png -> Antoine/old/exemple/assets/wallHorizontal.png
+#	renamed:    Antoine/exemple/assets/wallVertical.png -> Antoine/old/exemple/assets/wallVertical.png
+#	renamed:    Antoine/exemple/index.html -> Antoine/old/exemple/index.html
+#	renamed:    Antoine/exemple/js/boot.js -> Antoine/old/exemple/js/boot.js
+#	renamed:    Antoine/exemple/js/desktop.ini -> Antoine/old/exemple/js/desktop.ini
+#	renamed:    Antoine/exemple/js/game.js -> Antoine/old/exemple/js/game.js
+#	renamed:    Antoine/exemple/js/load.js -> Antoine/old/exemple/js/load.js
+#	renamed:    Antoine/exemple/js/menu.js -> Antoine/old/exemple/js/menu.js
+#	renamed:    Antoine/exemple/js/play.js -> Antoine/old/exemple/js/play.js
+#	renamed:    Antoine/exemple/main.js -> Antoine/old/exemple/main.js
+#	renamed:    Antoine/exemple/phaser.min.js -> Antoine/old/exemple/phaser.min.js
+#	renamed:    Antoine/ressources/Dossier ressources.txt -> Antoine/old/ressources/Dossier ressources.txt
+#	renamed:    Antoine/ressources/bouton_aide copie.PNG -> Antoine/old/ressources/bouton_aide copie.PNG
+#	renamed:    Antoine/ressources/bouton_jouer.png -> Antoine/old/ressources/bouton_jouer.png
+#	renamed:    Antoine/ressources/bouton_quitter copie.PNG -> Antoine/old/ressources/bouton_quitter copie.PNG
+#	renamed:    Antoine/ressources/fond.png -> Antoine/old/ressources/fond.png
+#	new file:   Antoine/old/ressources/sprite_tortue.png
+#	renamed:    Antoine/ressources/tortue_base.png -> Antoine/old/ressources/tortue_base.png
+#	renamed:    Antoine/ressources/turtle_bleu.png -> Antoine/old/ressources/turtle_bleu.png
+#	renamed:    Antoine/ressources/turtle_jaune.png -> Antoine/old/ressources/turtle_jaune.png
+#	renamed:    Antoine/ressources/turtle_marron.png -> Antoine/old/ressources/turtle_marron.png
+#	renamed:    Antoine/ressources/turtle_vert.png -> Antoine/old/ressources/turtle_vert.png
+#	new file:   Antoine/phaser.min.js
+#	new file:   Antoine/spritedechet.psd
+#	new file:   Lucky/assets/banane.PNG
+#	new file:   Lucky/assets/bouteille_verre.png
+#	new file:   Lucky/assets/bouton_niveaux.png
+#	new file:   Lucky/assets/fond_niveaux.png
+#	new file:   Lucky/assets/journal.png
+#	new file:   Lucky/assets/plastique.png
+#	new file:   Lucky/assets/pomme.png
+#	modified:   Lucky/index.html
+#	modified:   Lucky/js/game.js
+#	new file:   Lucky/js/help.js
+#	modified:   Lucky/js/load.js
+#	modified:   Lucky/js/map.js
+#	modified:   Lucky/js/menu.js
+#	new file:   gitPush.bat
+#	new file:   monfichier
+#	new file:   ressources/aidejeu.png
+#	new file:   ressources/boutons/bouton_bleu_niveaux.PNG
+#	new file:   ressources/boutons/bouton_jaune_niveaux copie.PNG
+#	new file:   ressources/boutons/bouton_marron_niveaux.PNG
+#	new file:   ressources/boutons/bouton_marron_niveaux.PSD
+#	new file:   ressources/boutons/bouton_orange_niveaux.PNG
+#	new file:   ressources/boutons/bouton_rouge_niveaux.PNG
+#	new file:   ressources/boutons/bouton_vert_niveaux.png
+#	new file:   ressources/boutons/son_mute.png
+#	new file:   ressources/boutons/son_ok.png
+#	new file:   ressources/bravo.PNG
+#	new file:   ressources/dechets/banane copie.PNG
+#	new file:   ressources/dechets/bouteille_verre.png
+#	new file:   ressources/dechets/cafard.PNG
+#	new file:   ressources/dechets/conserve.png
+#	new file:   ressources/dechets/plastique.png
+#	new file:   ressources/dechets/pomme.png
+#	new file:   ressources/fond_jeu.PNG
+#	modified:   ressources/panneau_poubelles.PNG
+#	modified:   ressources/panneau_scores.PNG
+#	new file:   ressources/popup.PNG
+#	new file:   ressources/recommencer.png
+#	new file:   ressources/son/Musique Tropicale luau tiki bar lounge relaxant des chansons de l_ile hawaienne plage parti hula.mp3
+#	new file:   ressources/tortues/tortue_niveaux copie.PNG
+#
+
