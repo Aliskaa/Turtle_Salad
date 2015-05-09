@@ -9,8 +9,8 @@ var loadState = {
 		// Dechets
         game.load.image('dechetB', 'assets/enemy_bleu.png');
         game.load.image('dechetJ', 'assets/enemy_jaune.png');
-        game.load.image('dechetV', 'assets/enemy_vert.png');
-        game.load.image('dechetM', 'assets/enemy_marron.png');
+        game.load.image('dechetV', 'assets/bouteille_verre.png');
+        game.load.image('dechetM', 'assets/pomme.png');
         // Poubelles
         game.load.image('poubelleJO','assets/pjo.png');
         game.load.image('poubelleJF','assets/pjf.png');
