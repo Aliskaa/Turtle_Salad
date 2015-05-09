@@ -25,7 +25,6 @@ var menuState = {
                 win4: false,
                 win5: false
             };
-
 	},
 
 	update: function(){

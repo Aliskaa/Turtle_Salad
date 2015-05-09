@@ -55,17 +55,21 @@ var configState = {
 	}, 
 
 	Config1: function(){
-		 this.level = this.level1;
+		 game.difficulty.trashPopFrequency = 2200;
+		 game.difficulty.gravityDifficulty=120;
+		 game.state.start('menu');
 	},
 
 	Config2: function(){
-	 	 this.level = this.level2;		
+		 game.difficulty.trashPopFrequency = 1800;
+		 game.difficulty.gravityDifficulty=120;
+		 game.state.start('menu');
 	},
 
 	Config3: function(){
-		 this.level = this.level3;
-
-		
+		 game.difficulty.trashPopFrequency = 1000;
+		 game.difficulty.gravityDifficulty=120;
+		game.state.start('menu');
 	},
 };
 
