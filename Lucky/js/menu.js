@@ -49,6 +49,7 @@ var menuState = {
             dechetB: ['journal'],
             dechetJ: ['conserve']
         }
+        
 		//ButtonSound
 		this.ButtSound = game.add.audio('buttonSound');
 

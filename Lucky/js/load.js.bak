@@ -1,6 +1,11 @@
 var loadState = {
 
 	preload: function(){
+		//Sounds
+        game.load.audio('buttonSound', 'assets/multimedia_button_click_006.mp3');
+        game.load.audio('buttonSound2', 'assets/multimedia_button_click_018.mp3');
+        game.load.audio('Music', 'assets/Musique.mp3');
+		game.load.spritesheet('mute', 'assets/son.png',30, 28);
 		// background
         game.load.image('backgroundMenu', 'assets/fond.png');
         game.load.image('backgroundGame', 'assets/fond_in_game.png');
@@ -59,6 +64,10 @@ var loadState = {
 
 
 	create: function(){
+		game.difficulty = {
+					trashPopFrequency: 2200,
+					gravityDifficulty: 120
+		}
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.state.start('menu');
 	}

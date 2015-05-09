@@ -126,7 +126,12 @@ var playState = {
 			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});
-        }
+        }    
+            
+            //game.win.win1 = true;
+            
+            //game.state.start('map');
+
 	},
 
 	addEnemy: function(){        
@@ -172,7 +177,7 @@ var playState = {
 		enemy.checkWorldBounds = true;
 		enemy.cutOfBoundsKill = true;
         enemy.events.onOutOfBounds.add(this.trashOutOfBounds, this);
-
+		
         this.dechetrestant -= 1;
         this.nbdechetLabel.text = 'restants : '+this.dechetrestant;
         
@@ -181,8 +186,8 @@ var playState = {
 
 	movePlayer: function(){
 		this.player.body.velocity.x = 0;
-
-
+		
+	
 		if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			if(this.player.body.x - 4 >= 200) {
 				this.player.body.velocity.x = -300;
@@ -232,7 +237,7 @@ var playState = {
         }
 		this.deadTrash+=1;
     },
-
+	
 	trashOutOfBounds: function(enemy){
 		enemy.kill();
 		this.deadTrash+=1;

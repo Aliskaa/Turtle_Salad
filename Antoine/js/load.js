@@ -46,8 +46,8 @@ var loadState = {
 
 	create: function(){
 		game.difficulty = {
-					trashPopFrequency: 2200,
-					gravityDifficulty: 120
+			trashPopFrequency: 2200,
+			gravityDifficulty: 120
 		}
 
 		game.physics.startSystem(Phaser.Physics.ARCADE);
