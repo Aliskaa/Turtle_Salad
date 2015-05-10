@@ -128,7 +128,7 @@ var playState = {
 			this.poubelleJPopUp = game.add.sprite(550, 375, 'poubelleJF');
 			this.poubelleJPopUp.anchor.setTo(0.5,0.5);
             this.pourcent = this.score/this.nbdechet * 100;
-            this.nbdechetpourcent = game.add.text(500, 215, 'Tu as '+this.pourcent+' %', {font: '30px Arial', fill: '#000000'});
+            this.nbdechetpourcent = game.add.text(500, 215, 'Tu as trie '+Math.floor(this.pourcent)+' % des dechets', {font: '30px Arial', fill: '#000000'});
             this.nbdechetpourcent.anchor.setTo(0.5,0.5);
 			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
@@ -209,7 +209,6 @@ var playState = {
     
     dieDechet: function(player,enemy){
         enemy.kill();
-        
         if(player.key == 'tortueJ' & enemy.key == 'dechetJ' & game.global.activatePoubelleJ){
             this.score += 1;
             this.nbdechetJ += 1;
@@ -247,7 +246,7 @@ var playState = {
 	},
 
     loseGame: function(){
-        game.state.start('play');
+        game.state.start('map');
     },
     
     winGame: function(){
