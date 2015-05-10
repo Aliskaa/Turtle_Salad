@@ -3,6 +3,9 @@ var menuState = {
 	create: function(){
 		
         background = game.add.sprite(0,0,'backgroundMenu');
+        
+        logo = game.add.sprite(100,100,'logo');
+        logo.scale.set(1.5, 1.5);
 
         this.PlayButton = game.add.button(740,155,'buttonPlay', this.PlayB,this);
         this.PlayButton.anchor.setTo(0.5,0.5);

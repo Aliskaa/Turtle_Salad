@@ -3,7 +3,7 @@ var playState = {
 	create: function(){
         
         this.background = game.add.sprite(0, 0, 'backgroundGame');
-        this.background = game.add.sprite(10, 10, 'panneauScores');
+        this.background = game.add.sprite(10, 10, 'panneauPoubelles');
         this.background = game.add.sprite(785, 10, 'panneauPoubelles');
 		
 		game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -18,8 +18,8 @@ var playState = {
         this.score = 0;
         this.dechetrestant = this.nbdechet;
 		this.deadTrash=0;
-        this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Crash', fill: '#000000'});
-        this.nbdechetLabel = game.add.text(30, 50, 'restants : '+this.nbdechet, {font: '18px Crash', fill: '#000000'});
+        this.scoreLabel = game.add.text(30, 25, 'score : 0 / '+this.nbdechet, {font: '30px Crash', fill: '#000000'});
+        this.nbdechetLabel = game.add.text(30, 60, 'restants : '+this.nbdechet, {font: '30px Crash', fill: '#000000'});
         
         if(game.global.activatePoubelleM){
             this.poubelleM = game.add.sprite(790, 100, 'poubelleMO');
@@ -128,11 +128,7 @@ var playState = {
 			this.poubelleJPopUp = game.add.sprite(550, 375, 'poubelleJF');
 			this.poubelleJPopUp.anchor.setTo(0.5,0.5);
             this.pourcent = this.score/this.nbdechet * 100;
-<<<<<<< HEAD
-            this.nbdechetpourcent = game.add.text(500, 215, 'Tu as '+this.pourcent+' %', {font: '50px Crash', fill: '#000000'});
-=======
-            this.nbdechetpourcent = game.add.text(500, 215, 'Tu as trie '+Math.floor(this.pourcent)+' % des dechets', {font: '30px Arial', fill: '#000000'});
->>>>>>> origin/master
+            this.nbdechetpourcent = game.add.text(500, 175, 'Tu as trie '+Math.floor(this.pourcent)+' % des dechets', {font: '35px Crash', fill: '#000000'});
             this.nbdechetpourcent.anchor.setTo(0.5,0.5);
 			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '40px Crash', fill: '#000000'});
 			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '40px Crash', fill: '#000000'});
@@ -154,23 +150,6 @@ var playState = {
         
         dechets = [];
         indexDechet = 0;
-        
-        /*if(game.global.activatePoubelleM){
-            dechets.push('dechetM');
-            indexDechet+=1;
-        }*/
-        if(game.global.activatePoubelleV){
-            dechets.push('dechetV');
-            indexDechet+=1;
-        }
-        if(game.global.activatePoubelleB){
-            dechets.push('dechetB');
-            indexDechet+=1;
-        }
-       if(game.global.activatePoubelleJ){
-            dechets.push('dechetJ');
-            indexDechet+=1;
-        }
 
         var positionDechet = Math.floor(Math.random()*game.pushDechets.indexDechet);
         enemy.loadTexture(game.pushDechets.dechet[positionDechet]);
@@ -213,6 +192,7 @@ var playState = {
     
     dieDechet: function(player,enemy){
         enemy.kill();
+        
         if(player.key == 'tortueJ' & enemy.key == 'dechetJ' & game.global.activatePoubelleJ){
             this.score += 1;
             this.nbdechetJ += 1;
@@ -240,6 +220,7 @@ var playState = {
         else {
             game.add.tween(this.player).to( { angle: 360 }, 750, Phaser.Easing.Linear.None, true);
             game.add.tween(this.player.scale).to( { x: 1.5, y: 1.5 }, 325).to({x: 1, y: 1}, 325).start();
+            
         }
 		this.deadTrash+=1;
     },

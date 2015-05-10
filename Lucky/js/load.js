@@ -13,6 +13,7 @@ var loadState = {
 		// Player
 		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
         game.load.image('tortueMap','assets/tortue_niveaux.png');
+        game.load.image('logo','assets/logo2.png');
 		// Dechets
         game.load.image('journal', 'assets/journal.png');
         game.load.image('lait', 'assets/lait.png');
