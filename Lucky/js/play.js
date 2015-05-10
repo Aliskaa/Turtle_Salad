@@ -18,8 +18,8 @@ var playState = {
         this.score = 0;
         this.dechetrestant = this.nbdechet;
 		this.deadTrash=0;
-        this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
-        this.nbdechetLabel = game.add.text(30, 50, 'restants : '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
+        this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Crash', fill: '#000000'});
+        this.nbdechetLabel = game.add.text(30, 50, 'restants : '+this.nbdechet, {font: '18px Crash', fill: '#000000'});
         
         if(game.global.activatePoubelleM){
             this.poubelleM = game.add.sprite(790, 100, 'poubelleMO');
@@ -108,12 +108,12 @@ var playState = {
             this.scorePopUp = game.add.sprite(500, 275, 'panneauScoresPopUp');
             this.scorePopUp.anchor.setTo(0.5,0.5);
             if(this.score/this.nbdechet >= 0.8){
-                this.messagePopUp = game.add.sprite(500, 150, 'Bravo');
+                this.messagePopUp = game.add.sprite(500, 100, 'Bravo');
                 this.messagePopUp.anchor.setTo(0.5, 0.5);
                 this.buttonSuivant = game.add.button(500,450,'buttonPlay', this.winGame,this);
                 this.buttonSuivant.anchor.setTo(0.5, 0.5);
             } else {
-                this.messagePopUp = game.add.sprite(500, 150, 'Recommencer');
+                this.messagePopUp = game.add.sprite(500, 100, 'Recommencer');
                 this.messagePopUp.anchor.setTo(0.5, 0.5);
                 this.buttonSuivant = game.add.button(500,450,'buttonPlay', this.loseGame,this);
                 this.buttonSuivant.anchor.setTo(0.5, 0.5);
@@ -128,12 +128,12 @@ var playState = {
 			this.poubelleJPopUp = game.add.sprite(550, 375, 'poubelleJF');
 			this.poubelleJPopUp.anchor.setTo(0.5,0.5);
             this.pourcent = this.score/this.nbdechet * 100;
-            this.nbdechetpourcent = game.add.text(500, 215, 'Tu as '+this.pourcent+' %', {font: '30px Arial', fill: '#000000'});
+            this.nbdechetpourcent = game.add.text(500, 215, 'Tu as '+this.pourcent+' %', {font: '50px Crash', fill: '#000000'});
             this.nbdechetpourcent.anchor.setTo(0.5,0.5);
-			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '18px Arial', fill: '#000000'});
-			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
-			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});
-			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});
+			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '40px Crash', fill: '#000000'});
+			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '40px Crash', fill: '#000000'});
+			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '40px Crash', fill: '#000000'});
+			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '40px Crash', fill: '#000000'});
         }
 	},
 
