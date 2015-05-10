@@ -29,6 +29,10 @@ var configState = {
 		 this.ReturnButton.inputEnabled = true;
 		 //this.ReturnButton.width = 250;
 
+		//ButtonSound
+		 this.ButtSound = game.add.audio('buttonSound');
+		 this.ButtSound2 = game.add.audio('buttonSound2');
+
 
 	},
 
@@ -51,21 +55,32 @@ var configState = {
  	},
 
 	Return: function(){
+		this.ButtSound.play();
 		game.state.start('menu');
 	}, 
 
 	Config1: function(){
-		 this.level = this.level1;
+		this.ButtSound2.play();
+		game.difficulty.trashPopFrequency = 2200;
+		game.difficulty.gravityDifficulty=120;
+        game.difficulty.numberOfTrash=15;
+		game.state.start('menu');
 	},
 
 	Config2: function(){
-	 	 this.level = this.level2;		
+		this.ButtSound2.play();
+		game.difficulty.trashPopFrequency = 1800;
+		game.difficulty.gravityDifficulty=120;
+        game.difficulty.numberOfTrash=25;
+		game.state.start('menu');
 	},
 
 	Config3: function(){
-		 this.level = this.level3;
-
-		
+		this.ButtSound2.play();
+		game.difficulty.trashPopFrequency = 1000;
+		game.difficulty.gravityDifficulty=120;
+        game.difficulty.numberOfTrash=40;
+		game.state.start('menu');
 	},
 };
 

@@ -3,23 +3,22 @@ var playState = {
 	create: function(){
         
         this.background = game.add.sprite(0, 0, 'backgroundGame');
-        this.background = game.add.sprite(10, 10, 'panneauPoubelles');
+        this.background = game.add.sprite(10, 10, 'panneauScores');
         this.background = game.add.sprite(785, 10, 'panneauPoubelles');
 		
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		
 		this.cursor = game.input.keyboard.createCursorKeys();
         
-        this.nbdechet = game.difficulty.numberOfTrash;
+        this.nbdechet = 5;
         this.nbdechetJ = 0;
         this.nbdechetB = 0;
         this.nbdechetV = 0;
         this.nbdechetM = 0;
         this.score = 0;
         this.dechetrestant = this.nbdechet;
-		this.deadTrash=0;
-        this.scoreLabel = game.add.text(30, 25, 'score : 0 / '+this.nbdechet, {font: '30px Crash', fill: '#000000'});
-        this.nbdechetLabel = game.add.text(30, 60, 'restants : '+this.nbdechet, {font: '30px Crash', fill: '#000000'});
+        this.scoreLabel = game.add.text(30, 30, 'score : 0 / '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
+        this.nbdechetLabel = game.add.text(30, 50, 'restants : '+this.nbdechet, {font: '18px Arial', fill: '#000000'});
         
         if(game.global.activatePoubelleM){
             this.poubelleM = game.add.sprite(790, 100, 'poubelleMO');
@@ -47,8 +46,8 @@ var playState = {
 		this.enemies.enableBody = true;
 		this.enemies.createMultiple(this.nbdechet,'dechetM');
         this.nextDechet = 0;
-
-		this.trashLoop = this.time.events.loop(game.difficulty.trashPopFrequency, this.addEnemy, this);
+        
+		this.trashLoop = this.time.events.loop(2200, this.addEnemy, this);
         
         this.numberOfLane = 5;
         
@@ -99,21 +98,19 @@ var playState = {
         
 		this.movePlayer();
         
-        if(this.dechetrestant == 0){
+        if(this.dechetrestant == -1){
             // game.state.start('menu');
             game.time.events.remove(this.trashLoop);
-		}
-		if(this.deadTrash == this.nbdechet){
             //this.input.keyboard.destroy();
             this.scorePopUp = game.add.sprite(500, 275, 'panneauScoresPopUp');
             this.scorePopUp.anchor.setTo(0.5,0.5);
             if(this.score/this.nbdechet >= 0.8){
-                this.messagePopUp = game.add.sprite(500, 100, 'Bravo');
+                this.messagePopUp = game.add.sprite(500, 150, 'Bravo');
                 this.messagePopUp.anchor.setTo(0.5, 0.5);
                 this.buttonSuivant = game.add.button(500,450,'buttonPlay', this.winGame,this);
                 this.buttonSuivant.anchor.setTo(0.5, 0.5);
             } else {
-                this.messagePopUp = game.add.sprite(500, 100, 'Recommencer');
+                this.messagePopUp = game.add.sprite(500, 150, 'Recommencer');
                 this.messagePopUp.anchor.setTo(0.5, 0.5);
                 this.buttonSuivant = game.add.button(500,450,'buttonPlay', this.loseGame,this);
                 this.buttonSuivant.anchor.setTo(0.5, 0.5);
@@ -127,13 +124,10 @@ var playState = {
 			this.poubelleBPopUp.anchor.setTo(0.5,0.5);
 			this.poubelleJPopUp = game.add.sprite(550, 375, 'poubelleJF');
 			this.poubelleJPopUp.anchor.setTo(0.5,0.5);
-            this.pourcent = this.score/this.nbdechet * 100;
-            this.nbdechetpourcent = game.add.text(500, 175, 'Tu as trie '+Math.floor(this.pourcent)+' % des dechets', {font: '35px Crash', fill: '#000000'});
-            this.nbdechetpourcent.anchor.setTo(0.5,0.5);
-			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '40px Crash', fill: '#000000'});
-			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '40px Crash', fill: '#000000'});
-			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '40px Crash', fill: '#000000'});
-			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '40px Crash', fill: '#000000'});
+			this.nbdechetMLabel = game.add.text(400, 270, ''+this.nbdechetM, {font: '18px Arial', fill: '#000000'});
+			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
+			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});
+			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});		   
         }
 	},
 
@@ -146,26 +140,47 @@ var playState = {
 		}
         
         var dechets = null;
-        var indexDechet = 0;
+        var nbdechet = 0;
         
         dechets = [];
-        indexDechet = 0;
+        nbdechet = 0;
+        
+        if(game.global.activatePoubelleM){
+            dechets.push('dechetM');
+            nbdechet+=1;
+        }
+        if(game.global.activatePoubelleV){
+            dechets.push('dechetV');
+            nbdechet+=1;
+        }
+        if(game.global.activatePoubelleB){
+            dechets.push('dechetB');
+            nbdechet+=1;
+        }
+       if(game.global.activatePoubelleJ){
+            dechets.push('dechetJ');
+            nbdechet+=1;
+        }
 
-        var positionDechet = Math.floor(Math.random()*game.pushDechets.indexDechet);
-        enemy.loadTexture(game.pushDechets.dechet[positionDechet]);
-        enemy.key = game.pushDechets.type[positionDechet];
+
+        var positionDechet = Math.floor(Math.random()*nbdechet);
+        enemy.loadTexture(dechets[positionDechet]);
+        enemy.key = dechets[positionDechet];
 
         position = position + Math.floor(Math.random()*this.numberOfLane)*110;
 		enemy.anchor.setTo(0.5, 1);
 		enemy.reset(position, 125);
-		enemy.body.gravity.y = game.difficulty.gravityDifficulty;
+		enemy.body.gravity.y = 250;
 		enemy.body.bounce.x = 1;
 		enemy.checkWorldBounds = true;
 		enemy.cutOfBoundsKill = true;
-        enemy.events.onOutOfBounds.add(this.trashOutOfBounds, this);
-
+        
         this.dechetrestant -= 1;
-        this.nbdechetLabel.text = 'restants : '+this.dechetrestant;
+        
+        if(this.dechetrestant >= 0){
+            this.nbdechetLabel.text = 'restants : '+this.dechetrestant;
+        }
+        
         
         this.nextDechet = this.nextDechet + 1;
     },
@@ -173,20 +188,15 @@ var playState = {
 	movePlayer: function(){
 		this.player.body.velocity.x = 0;
 
-
 		if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			if(this.player.body.x - 4 >= 200) {
 				this.player.body.velocity.x = -300;
-				game.add.tween(this.player).to( { angle: -40 }, 100, Phaser.Easing.Linear.None, true);
 			}
 		}
 		else if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
 			if(this.player.body.x + 4 <= 700) {
 				this.player.body.velocity.x = 300;
-				game.add.tween(this.player).to( { angle: 40 }, 100, Phaser.Easing.Linear.None, true);
 			}
-		}else{
-			game.add.tween(this.player).to( { angle: 0 }, 100, Phaser.Easing.Linear.None, true);
 		}
 	},
     
@@ -220,18 +230,11 @@ var playState = {
         else {
             game.add.tween(this.player).to( { angle: 360 }, 750, Phaser.Easing.Linear.None, true);
             game.add.tween(this.player.scale).to( { x: 1.5, y: 1.5 }, 325).to({x: 1, y: 1}, 325).start();
-            
         }
-		this.deadTrash+=1;
     },
-
-	trashOutOfBounds: function(enemy){
-		enemy.kill();
-		this.deadTrash+=1;
-	},
-
+    
     loseGame: function(){
-        game.state.start('map');
+        game.state.start('play');
     },
     
     winGame: function(){

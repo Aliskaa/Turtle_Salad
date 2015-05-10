@@ -32,5 +32,10 @@ var loadState = {
 
 	create: function(){
 		game.state.start('menu');
+        game.difficulty = {
+				trashPopFrequency: 2200,
+				gravityDifficulty: 120,
+				numberOfTrash: 15
+		}
 	}
 };

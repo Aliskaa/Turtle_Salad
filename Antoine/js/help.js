@@ -10,6 +10,8 @@ var helpState = {
 		 this.ReturnButton.input.useHandCursor = true;
 		 this.ReturnButton.inputEnabled = true;
 
+		//ButtonSound
+		 this.ButtSound = game.add.audio('buttonSound');
 	},
 		
 	update: function(){
@@ -23,6 +25,7 @@ var helpState = {
 
 
 	Return: function(){
+		this.ButtSound.play();
 		game.state.start('menu');
 
 	}, 

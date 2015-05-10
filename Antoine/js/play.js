@@ -10,7 +10,7 @@ var playState = {
 		
 		this.cursor = game.input.keyboard.createCursorKeys();
         
-        this.nbdechet = 5;
+        this.nbdechet = game.difficulty.numberOfTrash;
         this.nbdechetJ = 0;
         this.nbdechetB = 0;
         this.nbdechetV = 0;
@@ -92,13 +92,6 @@ var playState = {
                                             if(typeof this.poubelleV  != "undefined") this.poubelleV.loadTexture('poubelleVF');
                                             this.poubelleJ.loadTexture('poubelleJO');},this);
         }
-		
-		//this.righButton = this.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
-          //  this.righButton.onDown.add(function(){
-		//								game.add.tween(this.player).to( { angle: 15 }, 100, Phaser.Easing.Linear.None, true);
-			//							},this);
-
-		
 	},
 
 	update: function(){
@@ -114,6 +107,18 @@ var playState = {
             //this.input.keyboard.destroy();
             this.scorePopUp = game.add.sprite(500, 275, 'panneauScoresPopUp');
             this.scorePopUp.anchor.setTo(0.5,0.5);
+            if(this.score/this.nbdechet >= 0.8){
+                this.messagePopUp = game.add.sprite(500, 150, 'Bravo');
+                this.messagePopUp.anchor.setTo(0.5, 0.5);
+                this.buttonSuivant = game.add.button(500,450,'buttonPlay', this.winGame,this);
+                this.buttonSuivant.anchor.setTo(0.5, 0.5);
+            } else {
+                this.messagePopUp = game.add.sprite(500, 150, 'Recommencer');
+                this.messagePopUp.anchor.setTo(0.5, 0.5);
+                this.buttonSuivant = game.add.button(500,450,'buttonPlay', this.loseGame,this);
+                this.buttonSuivant.anchor.setTo(0.5, 0.5);
+            }
+            this.messagePopUp.anchor.setTo(0.5, 0.5);
             this.poubelleMPopUp = game.add.sprite(350, 275, 'poubelleMF');
 			this.poubelleMPopUp.anchor.setTo(0.5,0.5);
 			this.poubelleVPopUp = game.add.sprite(350, 375, 'poubelleVF');
@@ -126,12 +131,7 @@ var playState = {
 			this.nbdechetVLabel = game.add.text(400, 370, ''+this.nbdechetV, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetBLabel = game.add.text(600, 270, ''+this.nbdechetB, {font: '18px Arial', fill: '#000000'});
 			this.nbdechetJLabel = game.add.text(600, 370, ''+this.nbdechetJ, {font: '18px Arial', fill: '#000000'});
-        }    
-            
-            //game.win.win1 = true;
-            
-            //game.state.start('map');
-
+        }
 	},
 
 	addEnemy: function(){        
@@ -177,7 +177,7 @@ var playState = {
 		enemy.checkWorldBounds = true;
 		enemy.cutOfBoundsKill = true;
         enemy.events.onOutOfBounds.add(this.trashOutOfBounds, this);
-		
+
         this.dechetrestant -= 1;
         this.nbdechetLabel.text = 'restants : '+this.dechetrestant;
         
@@ -186,8 +186,8 @@ var playState = {
 
 	movePlayer: function(){
 		this.player.body.velocity.x = 0;
-		
-	
+
+
 		if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
 			if(this.player.body.x - 4 >= 200) {
 				this.player.body.velocity.x = -300;
@@ -237,9 +237,53 @@ var playState = {
         }
 		this.deadTrash+=1;
     },
-	
+
 	trashOutOfBounds: function(enemy){
 		enemy.kill();
 		this.deadTrash+=1;
 	},
+
+    loseGame: function(){
+        game.state.start('play');
+    },
+    
+    winGame: function(){
+        if(game.win.win1){
+            if(game.win.win2){
+                if(game.win.win3){
+                    if(game.win.win4){
+                        if(game.win.win5){
+                            game.win.win6 = true;
+                            game.state.start('map');
+                        } else {
+                            game.win.win5 = true;
+                            game.tortue.x = 764;
+                            game.tortue.y = 43;
+                            game.state.start('map');
+                        }
+                    } else {
+                        game.win.win4 = true;
+                        game.tortue.x = 533;
+                        game.tortue.y = 98;
+                        game.state.start('map');
+                    }
+                } else {
+                    game.win.win3 = true;
+                    game.tortue.x = 531;
+                    game.tortue.y = 350;
+                    game.state.start('map');
+                }
+            } else {
+                game.win.win2 = true;
+                game.tortue.x = 253;
+                game.tortue.y = 126;
+                game.state.start('map');
+            }
+        } else {
+            game.win.win1 = true;
+            game.tortue.x = 59;
+            game.tortue.y = 349;
+            game.state.start('map');
+        }
+    }
 };

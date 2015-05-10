@@ -64,6 +64,21 @@ var mapState = {
         
         this.tortueMap = game.add.sprite(game.tortue.x,game.tortue.y,'tortueMap');
         this.tortueMap.anchor.setTo(0.5, 0.5);
+
+        if(game.win.win6){
+            var PC = game.add.sprite(500, 275,'PF');
+            PC.anchor.setTo(0.5,0.5);
+        }
+        
+		//ButtonSound
+		this.ButtSound = game.add.audio('buttonSound');
+        
+        
+        game.pushDechets = {
+            dechet: [],
+            type: [],
+            indexDechet: 0
+        }
     },
 
     update: function(){
@@ -95,6 +110,7 @@ var mapState = {
  	},
 
  	Return: function(){
+		this.ButtSound.play();
 		game.state.start('menu');
 
 	}, 
@@ -106,6 +122,10 @@ var mapState = {
             activatePoubelleB:false,
             activatePoubelleJ:false
 		};
+        game.pushDechets.dechet.push('pomme','couche_culotte');
+        game.pushDechets.type.push('dechetM','dechetM');
+        game.pushDechets.indexDechet += 2;
+		this.ButtSound.play();
         var PC = game.add.sprite(500, 275,'PC1');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -119,6 +139,10 @@ var mapState = {
             activatePoubelleB :false,
             activatePoubelleJ :false
 		};
+        game.pushDechets.dechet.push('pomme','couche_culotte','bouteille_verre');
+        game.pushDechets.type.push('dechetM','dechetM','dechetV');
+        game.pushDechets.indexDechet += 3;
+		this.ButtSound.play();
         var PC = game.add.sprite(500, 275,'PC2');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -132,6 +156,11 @@ var mapState = {
             activatePoubelleB:false,
             activatePoubelleJ:false
 		};
+        game.pushDechets.dechet.push('pomme','couche_culotte','bouteille_verre','bocal');
+        game.pushDechets.type.push('dechetM','dechetM','dechetV','dechetV');
+        game.pushDechets.indexDechet += 4;
+		this.ButtSound.play();
+        game.dechets.dechetV = ['bouteille_verre','bocal'];
         var PC = game.add.sprite(500, 275,'PC3');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -146,6 +175,10 @@ var mapState = {
             activatePoubelleB:true,
             activatePoubelleJ:false
 		};
+        game.pushDechets.dechet.push('pomme','couche_culotte','bouteille_verre','bocal','journal');
+        game.pushDechets.type.push('dechetM','dechetM','dechetV','dechetV','dechetB');
+        game.pushDechets.indexDechet += 5;
+		this.ButtSound.play();
         var PC = game.add.sprite(500, 275,'PC4');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -160,6 +193,10 @@ var mapState = {
             activatePoubelleB:true,
             activatePoubelleJ:true
 		};
+        game.pushDechets.dechet.push('pomme','couche_culotte','bouteille_verre','bocal','journal','conserve');
+        game.pushDechets.type.push('dechetM','dechetM','dechetV','dechetV','dechetB','dechetJ');
+        game.pushDechets.indexDechet += 6;
+		this.ButtSound.play();
         var PC = game.add.sprite(500, 275,'PC5');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -167,6 +204,11 @@ var mapState = {
 	},
 
 	playLevel6:function(){
+        game.pushDechets.dechet.push('pomme','couche_culotte','bouteille_verre','bocal','journal','conserve','lait');
+        game.pushDechets.type.push('dechetM','dechetM','dechetV','dechetV','dechetB','dechetJ','dechetJ');
+        game.pushDechets.indexDechet += 7;
+		this.ButtSound.play();
+        game.dechets.dechetJ = ['conserve','lait'];
         var PC = game.add.sprite(500, 275,'PC6');
         PC.anchor.setTo(0.5,0.5);
         var button = game.add.button(500, 520, 'buttonPlay', this.playGame, this);
@@ -176,5 +218,4 @@ var mapState = {
     playGame: function(){
         game.state.start('play');
     }
-
 };

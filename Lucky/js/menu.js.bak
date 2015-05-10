@@ -1,11 +1,15 @@
 var menuState = {
 
 	create: function(){
-		
+		//BackSound
+		if(!this.musicIsPlaying){
+			 this.BackSound = game.add.audio('Music');
+        	 this.BackSound.play();
+			 //this.BackSound.play('',0,1,true);
+			 //this.BackSound.loop = true;
+			 this.musicIsPlaying = true;
+			}
         background = game.add.sprite(0,0,'backgroundMenu');
-        
-        logo = game.add.sprite(100,100,'logo');
-        logo.scale.set(1.5, 1.5);
 
         this.PlayButton = game.add.button(740,155,'buttonPlay', this.PlayB,this);
         this.PlayButton.anchor.setTo(0.5,0.5);
@@ -27,10 +31,18 @@ var menuState = {
 		if (game.sound.mute) {
 			this.muteButton.frame = 1;
 		}
+
+        game.win = {
+            win1: false,
+            win2: false,
+            win3: false,
+            win4: false,
+            win5: false
+        };
         
         game.tortue = {
             x: 278,
-            y: 430
+            y:430
         };
         
         game.dechets = {
@@ -39,7 +51,6 @@ var menuState = {
             dechetB: ['journal'],
             dechetJ: ['conserve']
         }
-        
 		//ButtonSound
 		this.ButtSound = game.add.audio('buttonSound');
 
@@ -62,25 +73,17 @@ var menuState = {
  	},
 
 	PlayB:function(){
-		this.ButtSound.play();
         game.add.tween(this.PlayButton.scale).to({x: 1.2, y: 1.2}, 50).to({x: 1, y: 1}, 150).start();
 
 		game.state.start('map');
 	},
 
 	HelpB: function(){
-		this.ButtSound.play();
 		game.state.start('help');
 	},
 
 	ConfigB:function(){
-        this.ButtSound.play();
+        
         this.game.state.start('config');
 	},
-
-	toggleSound: function(){
-		game.sound.mute = ! game.sound.mute;
-		this.muteButton.frame = game.sound.mute ? 1 : 0;
-	},
-
 };
