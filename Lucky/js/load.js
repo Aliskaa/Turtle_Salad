@@ -5,13 +5,13 @@ var loadState = {
         game.load.audio('buttonSound', 'assets/multimedia_button_click_006.mp3');
         game.load.audio('buttonSound2', 'assets/multimedia_button_click_018.mp3');
         game.load.audio('Music', 'assets/Musique.mp3');
-		game.load.spritesheet('mute', 'assets/son.png',30, 28);
+	game.load.spritesheet('mute', 'assets/son.png',30, 28);
 		// background
         game.load.image('backgroundMenu', 'assets/fond.png');
         game.load.image('backgroundGame', 'assets/fond_in_game.png');
-		game.load.image('backgroundHelp', 'assets/aidejeu.png');
+	game.load.image('backgroundHelp', 'assets/aidejeu.png');
 		// Player
-		game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
+	game.load.spritesheet('tortue', 'assets/sprite_tortue.png', 60, 60);
         game.load.image('tortueMap','assets/tortue_niveaux.png');
         game.load.image('logo','assets/logo2.png');
 		// Dechets
@@ -22,7 +22,7 @@ var loadState = {
         game.load.image('bouteille_verre', 'assets/bouteille_verre.png');
         game.load.image('pomme', 'assets/pomme.png');
         game.load.image('couche_culotte', 'assets/couche_culotte.png');
-        // Poubelles
+        	// Poubelles
         game.load.image('poubelleJO','assets/pjo.png');
         game.load.image('poubelleJF','assets/pjf.png');
         game.load.image('poubelleBO','assets/pbo.png');
@@ -31,11 +31,11 @@ var loadState = {
         game.load.image('poubelleMF','assets/pmf.png');
         game.load.image('poubelleVO','assets/pvo.png');
         game.load.image('poubelleVF','assets/pvf.png');
-        // Panneaux
+        	// Panneaux
         game.load.image('panneauPoubelles', 'assets/panneau_poubelles.png');
         game.load.image('panneauScores', 'assets/panneau_scores.png');
-		game.load.image('panneauScoresPopUp', 'assets/scores.PNG');
-        // Boutons
+	game.load.image('panneauScoresPopUp', 'assets/scores.png');
+        	// Boutons
         game.load.image('buttonEasy', 'assets/bouton_facile.png');
         game.load.image('buttonNormal', 'assets/bouton_normal.png');
         game.load.image('buttonHard', 'assets/bouton_difficile.png');
